@@ -1,24 +1,444 @@
-# Logs
-logs
-*.log
+# ==================================
+# COMPREHENSIVE .GITIGNORE
+# ==================================
+# For: React + TypeScript + Vite + PHP + MySQL + XAMPP
+# Investment Platform with Security Features
+
+# ==================================
+# NODE.JS / FRONTEND
+# ==================================
+# Dependencies
+node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Build outputs
+dist/
+dist-ssr/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
 
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Vite
+.vite/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# ==================================
+# PHP / BACKEND
+# ==================================
+# Composer
+/vendor/
+composer.phar
+composer.lock
+
+# PHP temporary files
+*.php~
+*.php.bak
+*.php.swp
+*.php.tmp
+
+# PHP session files
+/tmp/
+/temp/
+sessions/
+
+# PHP logs
+php_errors.log
+error_log
+access.log
+
+# XAMPP specific
+/xampp/
+/htdocs/
+/apache/
+/mysql/
+
+# ==================================
+# DATABASE
+# ==================================
+# MySQL dumps and backups
+*.sql
+*.sql.gz
+*.sql.bz2
+*.sql.xz
+*.dump
+*.backup
+
+# Database configuration files
+db_config.php
+database_config.php
+config/database.php
+
+# Migration logs
+migration_*.log
+
+# Database connection files
+connection.php
+db_connection.php
+
+# ==================================
+# ENVIRONMENT & CONFIGURATION
+# ==================================
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Configuration files with sensitive data
+config.php
+config.json
+settings.php
+app_config.php
+api_config.php
+
+# Local configuration overrides
+*local.php
+*local.json
+*local.yml
+*local.yaml
+
+# ==================================
+# SECURITY & SENSITIVE FILES
+# ==================================
+# API keys and secrets
+api_keys.php
+secrets.php
+credentials.php
+auth_config.php
+
+# SSL certificates and keys
+*.pem
+*.key
+*.crt
+*.cert
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# JWT secrets
+jwt_secret*
+private_key*
+public_key*
+
+# OAuth configurations
+oauth_config.php
+google_credentials.json
+facebook_config.php
+
+# Payment gateway configs
+stripe_config.php
+paypal_config.php
+payment_secrets.php
+
+# Encryption keys
+encryption_key*
+crypto_keys/
+
+# ==================================
+# UPLOADS & USER CONTENT
+# ==================================
+# File uploads
+uploads/
+files/
+media/
+assets/uploads/
+public/uploads/
+
+# User generated content
+user_files/
+user_media/
+profile_pictures/
+documents/
+
+# KYC and facial verification
+assets/kyc/
+assets/facial-verification/
+kyc_documents/
+verification_photos/
+
+# Temporary upload directories
+tmp_uploads/
+temp_files/
+
+# ==================================
+# LOGS & MONITORING
+# ==================================
+# Application logs
+logs/
+*.log
+app.log
+error.log
+access.log
+debug.log
+security.log
+
+# Monitoring and analytics
+analytics/
+stats/
+reports/
+monitoring/
+
+# Performance logs
+performance.log
+slow_queries.log
+
+# Security logs
+security_events.log
+audit.log
+intrusion.log
+
+# ==================================
+# DEVELOPMENT TOOLS
+# ==================================
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Windows
+*.lnk
+
+# Testing
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+test-output/
+
+# Debug files
+debug/
+*.debug
+debug.log
+
+# ==================================
+# BACKUP & TEMPORARY FILES
+# ==================================
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.save
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.#*
+#*#
+
+# Archive files (unless specifically needed)
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# ==================================
+# TELEGRAM BOT
+# ==================================
+# Bot configuration
+bot_config.php
+telegram_config.php
+bot_token.php
+
+# Bot logs
+bot.log
+telegram.log
+
+# Bot session data
+bot_sessions/
+telegram_sessions/
+
+# ==================================
+# DEPLOYMENT & CI/CD
+# ==================================
+# Deployment scripts with secrets
+deploy_config.php
+deployment_secrets.php
+
+# CI/CD temporary files
+.github/workflows/secrets/
+ci_temp/
+
+# Docker (if used)
+docker-compose.override.yml
+.dockerignore
+
+# ==================================
+# CACHING & OPTIMIZATION
+# ==================================
+# Cache directories
+cache/
+cached/
+.cache/
+storage/cache/
+
+# Compiled assets
+public/css/
+public/js/
+public/mix-manifest.json
+
+# Optimization temporary files
+.optimize/
+.minify/
+
+# ==================================
+# LOCAL DEVELOPMENT
+# ==================================
+# Local development overrides
+*.local
+local_*
+dev_*
+
+# Local database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Local server configurations
+.htaccess.local
+nginx.local.conf
+apache.local.conf
+
+# ==================================
+# PROJECT SPECIFIC
+# ==================================
+# Investment platform specific
+investment_data/
+portfolio_backups/
+transaction_logs/
+financial_reports/
+
+# Admin panel logs
+admin_actions.log
+admin_sessions/
+
+# Wallet data (sensitive)
+wallet_data/
+private_keys/
+seed_phrases.txt
+
+# Commission calculations
+commission_cache/
+referral_data/
+
+# Competition data
+competition_results/
+leaderboard_cache/
+
+# ==================================
+# PACKAGE MANAGERS
+# ==================================
+# npm
+package-lock.json
+npm-shrinkwrap.json
+
+# Yarn
+yarn.lock
+.yarn/
+.pnp.*
+
+# pnpm
+pnpm-lock.yaml
+
+# ==================================
+# MISC
+# ==================================
+# Runtime files
+*.pid
+*.lock
+
+# Temporary processing
+processing/
+queue/
+jobs/
+
+# External tools
+.tools/
+bin/
+vendor/
+
+# Documentation builds
+docs/build/
+documentation/output/
