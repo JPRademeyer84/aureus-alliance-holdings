@@ -1,0 +1,32 @@
+# Deny direct access to KYC documents for security
+# Only allow access through authorized API endpoints
+
+# Deny all direct access
+Order Deny,Allow
+Deny from all
+
+# Allow access only from localhost and authorized scripts
+Allow from 127.0.0.1
+Allow from ::1
+
+# Prevent directory browsing
+Options -Indexes
+
+# Prevent access to sensitive file types
+<Files "*.php">
+    Deny from all
+</Files>
+
+<Files "*.sql">
+    Deny from all
+</Files>
+
+<Files "*.log">
+    Deny from all
+</Files>
+
+# Only allow specific image and document types
+<FilesMatch "\.(jpg|jpeg|png|pdf)$">
+    # These files can only be accessed through authorized API calls
+    # Direct access is still denied for security
+</FilesMatch>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Frontend API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .test-section {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+        .success { color: #4ade80; }
+        .error { color: #f87171; }
+        .warning { color: #fbbf24; }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        pre {
+            background: #000;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Debug Frontend API Test</h1>
+    <p>This page tests the exact same API calls that the Debug Manager component makes.</p>
+
+    <div class="test-section">
+        <h2>Test 1: Debug Config API</h2>
+        <button onclick="testDebugConfigAPI()">Test Debug Config API</button>
+        <div id="debug-config-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Active Features API</h2>
+        <button onclick="testActiveFeatures()">Test Active Features API</button>
+        <div id="active-features-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Session Info</h2>
+        <button onclick="testSessionInfo()">Test Session Info</button>
+        <div id="session-info-result"></div>
+    </div>
+
+    <script>
+        async function testDebugConfigAPI() {
+            const resultDiv = document.getElementById('debug-config-result');
+            resultDiv.innerHTML = '<p class="warning">Testing debug config API...</p>';
+            
+            try {
+                console.log('Testing debug config API...');
+                
+                const response = await fetch('/api/admin/debug-config.php?action=list', {
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                
+                console.log('Response status:', response.status);
+                console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+                
+                const data = await response.json();
+                console.log('Response data:', data);
+                
+                if (data.success) {
+                    const enabledCount = data.data.filter(config => config.is_enabled).length;
+                    
+                    resultDiv.innerHTML = `
+                        <p class="success">✅ API Success!</p>
+                        <p><strong>Total Configs:</strong> ${data.data.length}</p>
+                        <p><strong>Enabled Configs:</strong> ${enabledCount}</p>
+                        <p><strong>Message:</strong> ${data.message}</p>
+                        <h4>Enabled Features:</h4>
+                        <ul>
+                            ${data.data.filter(config => config.is_enabled).map(config => 
+                                `<li>${config.feature_name} (${config.feature_key})</li>`
+                            ).join('')}
+                        </ul>
+                        <h4>Raw Response:</h4>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <p class="error">❌ API Error</p>
+                        <p><strong>Error:</strong> ${data.error || 'Unknown error'}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.innerHTML = `
+                    <p class="error">❌ Network Error</p>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p>Check browser console for details.</p>
+                `;
+            }
+        }
+
+        async function testActiveFeatures() {
+            const resultDiv = document.getElementById('active-features-result');
+            resultDiv.innerHTML = '<p class="warning">Testing active features API...</p>';
+            
+            try {
+                const response = await fetch('/api/admin/debug-config.php?action=active', {
+                    credentials: 'include'
+                });
+                
+                const data = await response.json();
+                console.log('Active features data:', data);
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <p class="success">✅ Active Features Success!</p>
+                        <p><strong>Active Features:</strong> ${data.data.features.length}</p>
+                        <p><strong>Environment:</strong> ${data.data.environment}</p>
+                        <p><strong>Debug Enabled:</strong> ${data.data.debug_enabled}</p>
+                        <h4>Features:</h4>
+                        <ul>
+                            ${data.data.features.map(feature => 
+                                `<li>${feature.feature_name} (${feature.feature_key})</li>`
+                            ).join('')}
+                        </ul>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <p class="error">❌ API Error</p>
+                        <p><strong>Error:</strong> ${data.error || 'Unknown error'}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.innerHTML = `
+                    <p class="error">❌ Network Error</p>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+
+        async function testSessionInfo() {
+            const resultDiv = document.getElementById('session-info-result');
+            resultDiv.innerHTML = '<p class="warning">Testing session info...</p>';
+            
+            try {
+                const response = await fetch('/api/test/admin-session-test.php', {
+                    credentials: 'include'
+                });
+                
+                const text = await response.text();
+                
+                resultDiv.innerHTML = `
+                    <p class="success">✅ Session Info Retrieved</p>
+                    <pre>${text}</pre>
+                `;
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.innerHTML = `
+                    <p class="error">❌ Network Error</p>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+
+        // Auto-run tests when page loads
+        window.addEventListener('load', () => {
+            console.log('Page loaded, running automatic tests...');
+            setTimeout(() => {
+                testDebugConfigAPI();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

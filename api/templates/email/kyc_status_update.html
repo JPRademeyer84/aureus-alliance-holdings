@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Status Update - Aureus Angel Alliance</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #FFD700;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .header p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px 30px;
+            background-color: #ffffff;
+        }
+        .status-approved {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border-left: 4px solid #28a745;
+            color: #155724;
+        }
+        .status-rejected {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+        .status-pending {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-left: 4px solid #ffc107;
+            color: #856404;
+        }
+        .status-incomplete {
+            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+            border-left: 4px solid #17a2b8;
+            color: #0c5460;
+        }
+        .status-box {
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        .status-box h3 {
+            margin: 0 0 15px 0;
+            font-size: 24px;
+        }
+        .status-box p {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .verification-level {
+            background: #f8f9fa;
+            border: 2px solid #FFD700;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        .verification-level h4 {
+            color: #1a1a1a;
+            margin: 0 0 10px 0;
+        }
+        .level-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #1a1a1a;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .next-steps {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        .next-steps h4 {
+            color: #1a1a1a;
+            margin-top: 0;
+        }
+        .next-steps ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        .next-steps li {
+            margin: 8px 0;
+            color: #495057;
+        }
+        .cta-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #1a1a1a;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+        .button:hover {
+            transform: translateY(-2px);
+        }
+        .requirements-box {
+            background: #e9ecef;
+            border-left: 4px solid #6c757d;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        .requirements-box h4 {
+            color: #495057;
+            margin-top: 0;
+        }
+        .footer {
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .footer p {
+            margin: 5px 0;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        @media (max-width: 600px) {
+            .container {
+                margin: 0;
+                box-shadow: none;
+            }
+            .content {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Aureus Angel Alliance</h1>
+            <p>Premium Digital Gold Investment Platform</p>
+        </div>
+        
+        <div class="content">
+            <h2 style="color: #1a1a1a; margin-bottom: 20px;">Hello {{username}},</h2>
+            
+            <p style="font-size: 16px; color: #495057; margin-bottom: 25px;">
+                We have an important update regarding your KYC (Know Your Customer) verification status.
+            </p>
+            
+            <div class="status-box status-{{status}}">
+                <h3>
+                    {{#if status == 'approved'}}✅ KYC Approved{{/if}}
+                    {{#if status == 'rejected'}}❌ KYC Rejected{{/if}}
+                    {{#if status == 'pending'}}⏳ KYC Under Review{{/if}}
+                    {{#if status == 'incomplete'}}📋 KYC Incomplete{{/if}}
+                </h3>
+                <p>{{status_message}}</p>
+            </div>
+            
+            <div class="verification-level">
+                <h4>Current Verification Level</h4>
+                <span class="level-badge">{{verification_level}}</span>
+            </div>
+            
+            <div class="next-steps">
+                <h4>📋 Next Steps</h4>
+                <p>{{next_steps}}</p>
+                
+                {{#if status == 'approved'}}
+                <ul>
+                    <li>You can now make investments up to your verification level limit</li>
+                    <li>Access to premium features is now enabled</li>
+                    <li>Higher commission rates are now active</li>
+                    <li>Consider upgrading to the next verification level for increased benefits</li>
+                </ul>
+                {{/if}}
+                
+                {{#if status == 'rejected'}}
+                <ul>
+                    <li>Review the rejection reasons in your dashboard</li>
+                    <li>Prepare new, clear documents that meet our requirements</li>
+                    <li>Ensure all information is clearly visible and matches your profile</li>
+                    <li>Contact support if you need assistance</li>
+                </ul>
+                {{/if}}
+                
+                {{#if status == 'pending'}}
+                <ul>
+                    <li>No action required from your side</li>
+                    <li>Our team is reviewing your submitted documents</li>
+                    <li>You will receive another update within 24-48 hours</li>
+                    <li>Continue using the platform with your current verification level</li>
+                </ul>
+                {{/if}}
+                
+                {{#if status == 'incomplete'}}
+                <ul>
+                    <li>Log in to your dashboard and complete the KYC process</li>
+                    <li>Upload all required documents</li>
+                    <li>Complete the facial verification if required</li>
+                    <li>Ensure all information is accurate and up-to-date</li>
+                </ul>
+                {{/if}}
+            </div>
+            
+            {{#if status == 'rejected' || status == 'incomplete'}}
+            <div class="requirements-box">
+                <h4>📄 Required Documents</h4>
+                <ul>
+                    <li><strong>Identity Document:</strong> Driver's License, National ID, or Passport</li>
+                    <li><strong>Proof of Address:</strong> Utility bill or bank statement (not older than 3 months)</li>
+                    <li><strong>Facial Verification:</strong> Live selfie verification</li>
+                </ul>
+                <p style="margin-top: 15px; font-size: 14px; color: #6c757d;">
+                    <strong>Note:</strong> All documents must be clear, unedited, and show all four corners. 
+                    Personal information must be clearly visible and match your profile details.
+                </p>
+            </div>
+            {{/if}}
+            
+            <div class="cta-section">
+                <a href="https://aureusangels.com/kyc" class="button">
+                    {{#if status == 'approved'}}View KYC Profile{{/if}}
+                    {{#if status == 'rejected'}}Resubmit Documents{{/if}}
+                    {{#if status == 'pending'}}Check Status{{/if}}
+                    {{#if status == 'incomplete'}}Complete KYC{{/if}}
+                </a>
+            </div>
+            
+            <div style="background: #f8f9fa; border-left: 4px solid #17a2b8; padding: 20px; border-radius: 8px; margin: 25px 0;">
+                <h4 style="color: #0c5460; margin-top: 0;">💡 Why KYC Verification?</h4>
+                <p style="color: #0c5460; margin: 0;">
+                    KYC verification helps us maintain a secure platform, comply with regulations, 
+                    and protect all our users. Higher verification levels unlock better commission rates, 
+                    increased investment limits, and access to premium features.
+                </p>
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0; padding: 20px; background: #e9ecef; border-radius: 8px;">
+                <h4 style="color: #495057; margin: 0 0 10px 0;">Need Help?</h4>
+                <p style="color: #6c757d; margin: 0;">
+                    Our support team is here to assist you with any questions about the KYC process.
+                </p>
+                <p style="margin: 10px 0 0 0;">
+                    <a href="mailto:support@aureusangels.com" style="color: #FFD700; text-decoration: none; font-weight: bold;">
+                        📧 support@aureusangels.com
+                    </a>
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Aureus Angel Alliance</strong></p>
+            <p>Premium Digital Gold Investment Platform</p>
+            <p>&copy; 2024 Aureus Angel Alliance. All rights reserved.</p>
+            <p>This email was sent to {{recipient}}. If you did not expect this email, please contact support.</p>
+            <p>Support: support@aureusangels.com | Website: https://aureusangels.com</p>
+        </div>
+    </div>
+</body>
+</html>

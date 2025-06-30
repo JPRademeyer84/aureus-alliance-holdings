@@ -1,0 +1,64 @@
+
+import React from "react";
+import DatabasePlanCard from "./DatabasePlanCard";
+import { useParticipationPackages } from "@/hooks/useInvestmentPackages";
+import { Loader2 } from "lucide-react";
+import { ST as T } from '@/components/SimpleTranslator';
+
+const AllPlans = () => {
+  const { packages, isLoading, error } = useParticipationPackages();
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center py-12">
+        <Loader2 className="h-8 w-8 animate-spin text-gold" />
+        <span className="ml-2 text-white">
+          <T k="participation.loading" fallback="Loading participation plans..." />
+        </span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center py-12">
+        <div className="text-center">
+          <div className="text-red-400 mb-2">❌ <T k="investment.error_connection" fallback="Database Connection Error" /></div>
+          <div className="text-white text-sm">{error}</div>
+          <div className="text-gray-400 text-xs mt-2">
+            <T k="investment.error_check_api" fallback="Please check API connection and database setup" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (packages.length === 0) {
+    return (
+      <div className="flex justify-center items-center py-12">
+        <div className="text-center">
+          <div className="text-yellow-400 mb-2">⚠️ <T k="participation.no_packages_title" fallback="No Participation Packages Found" /></div>
+          <div className="text-gray-400 text-sm">
+            <T k="participation.no_packages_desc" fallback="No packages available in the database" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {packages.map((pkg, index) => (
+        <DatabasePlanCard
+          key={pkg.id}
+          package={pkg}
+          isPopular={pkg.name.toLowerCase() === "gold"}
+          isPremium={pkg.name.toLowerCase() === "obsidian"}
+          showParticipateButton
+        />
+      ))}
+    </div>
+  );
+};
+
+export default AllPlans;

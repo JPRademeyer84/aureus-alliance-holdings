@@ -1,0 +1,128 @@
+🔧 INVESTMENT DUPLICATES CLEANUP
+===============================
+
+STEP 1: Analyzing aureus_investments table...
+Total investments before cleanup: 11
+Duplicate groups found: 2
+
+Duplicate investments by package name:
+- Shovel: 9 investments
+  IDs: test_inv_68529652c48075.00157697,test_inv_685295eab3bd56.15555825,test_inv_6852949305cbe8.56124682,test_inv_6852940f3535f5.50265047,test_inv_6852919eb3e5d3.70223258,test_inv_6852916c35ce44.95178727,test_inv_685291322f39c9.89433879,test_inv_68529107ddf507.95157682,test_inv_685290b9390b83.51344418
+- Thunder: 2 investments
+  IDs: inv_6851dadf795744.81196585,inv_6848468f899203.75307807
+
+Exact duplicate investments found: 2
+
+Exact duplicate investments:
+- User 5, Package: Shovel, Amount: $100.00
+  Count: 9, IDs: test_inv_685290b9390b83.51344418,test_inv_68529107ddf507.95157682,test_inv_685291322f39c9.89433879,test_inv_6852916c35ce44.95178727,test_inv_6852919eb3e5d3.70223258,test_inv_6852940f3535f5.50265047,test_inv_6852949305cbe8.56124682,test_inv_685295eab3bd56.15555825,test_inv_68529652c48075.00157697
+  First: 2025-06-18 12:11:05, Last: 2025-06-18 12:34:58
+
+- User 1, Package: Thunder, Amount: $0.10
+  Count: 2, IDs: inv_6848468f899203.75307807,inv_6851dadf795744.81196585
+  First: 2025-06-10 16:51:59, Last: 2025-06-17 23:15:11
+
+All investments in database:
+- ID: inv_6848468f899203.75307807
+  User: 1 (JPRademeyer)
+  Package: Thunder
+  Amount: $0.10
+  Status: completed
+  Created: 2025-06-10 16:51:59
+
+- ID: inv_6851dadf795744.81196585
+  User: 1 (JPRademeyer)
+  Package: Thunder
+  Amount: $0.10
+  Status: completed
+  Created: 2025-06-17 23:15:11
+
+- ID: test_inv_685290b9390b83.51344418
+  User: 5 (Test User)
+  Package: Shovel
+  Amount: $100.00
+  Status: pending
+  Created: 2025-06-18 12:11:05
+
+- ID: test_inv_68529107ddf507.95157682
+  User: 5 (Test User)
+  Package: Shovel
+  Amount: $100.00
+  Status: pending
+  Created: 2025-06-18 12:12:23
+
+- ID: test_inv_685291322f39c9.89433879
+  User: 5 (Test User)
+  Package: Shovel
+  Amount: $100.00
+  Status: pending
+  Created: 2025-06-18 12:13:06
+
+- ID: test_inv_6852916c35ce44.95178727
+  User: 5 (Test User)
+  Package: Shovel
+  Amount: $100.00
+  Status: pending
+  Created: 2025-06-18 12:14:04
+
+- ID: test_inv_6852919eb3e5d3.70223258
+  User: 5 (Test User)
+  Package: Shovel
+  Amount: $100.00
+  Status: pending
+  Created: 2025-06-18 12:14:54
+
+- ID: test_inv_6852940f3535f5.50265047
+  User: 5 (Test User)
+  Package: Shovel
+  Amount: $100.00
+  Status: pending
+  Created: 2025-06-18 12:25:19
+
+- ID: test_inv_6852949305cbe8.56124682
+  User: 5 (Test User)
+  Package: Shovel
+  Amount: $100.00
+  Status: pending
+  Created: 2025-06-18 12:27:31
+
+- ID: test_inv_685295eab3bd56.15555825
+  User: 5 (Test User)
+  Package: Shovel
+  Amount: $100.00
+  Status: pending
+  Created: 2025-06-18 12:33:14
+
+- ID: test_inv_68529652c48075.00157697
+  User: 5 (Test User)
+  Package: Shovel
+  Amount: $100.00
+  Status: pending
+  Created: 2025-06-18 12:34:58
+
+STEP 2: Analyzing investment legitimacy...
+- LEGITIMATE: User 5, Shovel, time diff: 0.4h
+- LEGITIMATE: User 1, Thunder, time diff: 174.39h
+
+Real duplicates to clean: 0
+Legitimate multiple investments: 2
+
+STEP 3: No real duplicates found to clean up
+
+STEP 4: Verifying cleanup results...
+Total investments after cleanup: 11
+Remaining duplicate groups: 2
+
+Remaining duplicates (likely legitimate):
+- User 5, Shovel: 9 investments, time span: 0.4h
+- User 1, Thunder: 2 investments, time span: 174.39h
+
+===============================
+🎉 INVESTMENT CLEANUP COMPLETE!
+===============================
+Summary:
+- Investments before: 11
+- Investments after: 11
+- Real duplicates removed: 0
+- Legitimate investments preserved: 2
+- Database status: ✅ CLEAN

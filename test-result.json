@@ -1,0 +1,28 @@
+{
+    "success": true,
+    "test_type": "Complete End-to-End Workflow Test",
+    "test_results": {
+        "workflow_test": {
+            "step_1_create_users": {
+                "status": "FAILED",
+                "error": "SQLSTATE[42S22]: Column not found: 1054 Unknown column 'password' in 'field list'"
+            },
+            "step_2_referral_tracking": [],
+            "step_3_investment_creation": [],
+            "step_4_commission_activation": [],
+            "step_5_withdrawal_request": [],
+            "step_6_security_verification": {
+                "status": "FAILED",
+                "error": "No referrer ID available for security verification"
+            }
+        },
+        "workflow_summary": {
+            "overall_status": "PARTIAL_FAILURE",
+            "steps_completed": 0,
+            "total_steps": 6,
+            "test_completed_at": "2025-06-18T12:10:01+02:00",
+            "referrer_username": "JPRademeyer",
+            "referred_username": "TestUser"
+        }
+    }
+}

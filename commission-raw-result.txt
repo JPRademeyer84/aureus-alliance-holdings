@@ -1,0 +1,15 @@
+=== COMMISSION API RAW RESPONSE TEST ===
+Testing what the commission plans API actually returns...
+
+✅ Admin session created: admin
+
+=== TESTING COMMISSION PLANS API ===
+<br />
+<b>Notice</b>:  session_start(): Ignoring session_start() because a session is already active in <b>C:\xampp\htdocs\aureus-angel-alliance\api\admin\commission-plans.php</b> on line <b>11</b><br />
+<br />
+<b>Fatal error</b>:  Uncaught Error: Call to undefined function sendResponse() in C:\xampp\htdocs\aureus-angel-alliance\api\admin\commission-plans.php:131
+Stack trace:
+#0 C:\xampp\htdocs\aureus-angel-alliance\api\admin\commission-plans.php(56): handleListPlans(Object(PDO))
+#1 C:\xampp\htdocs\aureus-angel-alliance\api\test\commission-raw-response.php(56): include('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in <b>C:\xampp\htdocs\aureus-angel-alliance\api\admin\commission-plans.php</b> on line <b>131</b><br />

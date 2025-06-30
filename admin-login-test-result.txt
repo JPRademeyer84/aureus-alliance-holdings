@@ -1,0 +1,40 @@
+🔍 TESTING ADMIN LOGIN
+======================
+
+1. Checking admin users...
+✅ Found 3 admin users:
+  - JPRademeyer (JPRademeyer) - chat_support
+  - admin () - super_admin
+  - adminpiet (adminpiet) - chat_support
+
+2. Creating test admin session...
+✅ Test session created:
+  - Admin ID: 07701901-4542-11f0-85ee-088fc31781b4
+  - Username: JPRademeyer
+  - Role: chat_support
+  - Session ID: ngv8ime2ensohr2onr0k4dtm0s
+
+3. Testing debug config API with session...
+✅ Debug API would return 8 configurations
+  - API Testing: ENABLED
+  - Cache Management: ENABLED
+  - Console Logs: ENABLED
+  - Error Tracking: ENABLED
+  - Network Monitor: ENABLED
+
+Summary: 5 of 8 features are enabled
+
+4. API Response Preview:
+Success: true
+Data count: 8
+First config: API Testing (enabled: true)
+
+======================
+🎯 LOGIN TEST COMPLETE
+======================
+
+📋 INSTRUCTIONS:
+1. Login to admin panel with username 'admin' and password 'admin123'
+2. Navigate to Debug Manager
+3. Debug configurations should now be visible
+4. Session ID for reference: ngv8ime2ensohr2onr0k4dtm0s

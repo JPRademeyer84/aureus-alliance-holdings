@@ -1,0 +1,60 @@
+🔍 TESTING DEBUG TOGGLE FUNCTIONALITY
+====================================
+
+✅ Admin session created: admin
+
+1. CURRENT DATABASE STATE:
+==========================
+  - API Testing: 🔴 DISABLED, VISIBLE (Updated: 2025-06-18 16:35:30)
+  - Cache Management: 🔴 DISABLED, VISIBLE (Updated: 2025-06-18 16:35:34)
+  - Console Logs: 🔴 DISABLED, VISIBLE (Updated: 2025-06-18 16:35:23)
+  - Database Queries: 🔴 DISABLED, VISIBLE (Updated: 2025-06-18 15:41:37)
+  - Error Tracking: 🟢 ENABLED, VISIBLE (Updated: 2025-06-18 15:41:37)
+  - Network Monitor: 🔴 DISABLED, VISIBLE (Updated: 2025-06-18 16:35:03)
+  - Performance Metrics: 🔴 DISABLED, VISIBLE (Updated: 2025-06-18 15:41:37)
+  - System Information: 🔴 DISABLED, VISIBLE (Updated: 2025-06-18 16:35:37)
+
+Current Status: 1 of 8 features enabled
+
+2. TESTING TOGGLE FUNCTIONALITY:
+================================
+Testing toggle for feature: api_testing
+  - Current state: DISABLED
+  - Toggling to: ENABLED
+  - ✅ Toggle successful (Rows affected: 1)
+  - ✅ Verified state: ENABLED
+  - ✅ State change confirmed!
+
+3. TESTING API ENDPOINT:
+========================
+Testing POST to debug-config.php?action=toggle
+  - POST data: {"feature_key":"console_logs","enabled":false}
+  - Testing handleToggleDebugFeature function...
+  - Console Logs current state: DISABLED
+  - ✅ Console Logs disabled successfully
+  - ✅ Verified Console Logs state: DISABLED
+
+4. FINAL DATABASE STATE:
+========================
+  - API Testing: 🟢 ENABLED (Updated: 2025-06-18 16:38:40)
+  - Cache Management: 🔴 DISABLED (Updated: 2025-06-18 16:35:34)
+  - Console Logs: 🔴 DISABLED (Updated: 2025-06-18 16:38:40)
+  - Database Queries: 🔴 DISABLED (Updated: 2025-06-18 15:41:37)
+  - Error Tracking: 🟢 ENABLED (Updated: 2025-06-18 15:41:37)
+  - Network Monitor: 🔴 DISABLED (Updated: 2025-06-18 16:35:03)
+  - Performance Metrics: 🔴 DISABLED (Updated: 2025-06-18 15:41:37)
+  - System Information: 🔴 DISABLED (Updated: 2025-06-18 16:35:37)
+
+Final Status: 2 of 8 features enabled
+
+5. RECOMMENDATIONS:
+==================
+⚠️  No features were disabled - there might be an issue
+🔍 Check the frontend toggle function and API calls
+🔍 Check browser network tab for failed API requests
+
+📋 NEXT STEPS:
+1. Refresh the Debug Manager page
+2. Check if the UI reflects the database changes
+3. If UI still shows wrong state, there's a frontend caching issue
+4. Check browser console for errors

@@ -1,0 +1,126 @@
+{
+    "success": true,
+    "test_type": "Security Debug and Fix",
+    "debug_results": {
+        "step_1_table_contents": {
+            "status": "SUCCESS",
+            "primary_table": {
+                "id": "fe5e0f74-4c2c-11f0-9d57-088fc31781b4",
+                "user_id": 1,
+                "total_usdt_earned": "101.00000000",
+                "total_nft_earned": 22,
+                "available_usdt_balance": "66.00000000",
+                "available_nft_balance": 22,
+                "total_usdt_withdrawn": "10.00000000",
+                "total_nft_redeemed": 0,
+                "balance_hash": "127a6ea0b83c93818e9086ef3c0c81bdc5c8a3ca62ca82da9d44576350bd5a2e",
+                "last_transaction_id": "security_test_68529d009c23b",
+                "last_updated": "2025-06-18 13:03:28",
+                "created_at": "2025-06-18 12:14:04"
+            },
+            "verification_table": {
+                "verification_id": "fe5e2f47-4c2c-11f0-9d57-088fc31781b4",
+                "user_identifier": 1,
+                "earned_usdt_total": "101.00000000",
+                "earned_nft_total": 22,
+                "usdt_balance_available": "66.00000000",
+                "nft_balance_available": 22,
+                "withdrawn_usdt_total": "10.00000000",
+                "redeemed_nft_total": 0,
+                "verification_hash": "127a6ea0b83c93818e9086ef3c0c81bdc5c8a3ca62ca82da9d44576350bd5a2e",
+                "cross_reference_hash": "d9c2cb684f1b36f1c18af4f86f372e48343c06d286f9c579466d9208290b507d",
+                "transaction_reference": "security_test_68529d009c23b",
+                "verification_timestamp": "2025-06-18 13:03:28",
+                "record_created": "2025-06-18 12:14:04"
+            },
+            "checksum_table": {
+                "checksum_id": "e54c8b2a-4c33-11f0-9d57-088fc31781b4",
+                "target_user_id": 1,
+                "balance_snapshot": "{\"total_usdt_earned\":101,\"total_nft_earned\":22,\"available_usdt_balance\":66,\"available_nft_balance\":22,\"total_usdt_withdrawn\":10,\"total_nft_redeemed\":0}",
+                "primary_table_checksum": "970f477b136b1711827bc2886f31d81714ee79b628ee2dc5cf3fc82cadb65274",
+                "verification_table_checksum": "548df1298010a608dc2f80037abbaaec0d9d819117308ec0c7c6f4ad9e9db076",
+                "combined_checksum": "c325161ff4a5937269eff3aaa9548bf229d8438629e5f1dab8e2cb29cffa1831",
+                "snapshot_timestamp": "2025-06-18 13:03:28",
+                "last_verification_result": "valid",
+                "verification_count": 0
+            },
+            "all_tables_have_data": true
+        },
+        "step_2_balance_differences": {
+            "status": "SUCCESS",
+            "differences": {
+                "usdt_earned_diff": 0,
+                "nft_earned_diff": 0,
+                "usdt_available_diff": 0,
+                "nft_available_diff": 0,
+                "usdt_withdrawn_diff": 0,
+                "nft_redeemed_diff": 0
+            },
+            "max_difference": 0,
+            "tables_match": true,
+            "primary_balances": {
+                "usdt_earned": "101.00000000",
+                "nft_earned": 22,
+                "usdt_available": "66.00000000",
+                "nft_available": 22,
+                "usdt_withdrawn": "10.00000000",
+                "nft_redeemed": 0
+            },
+            "verification_balances": {
+                "usdt_earned": "101.00000000",
+                "nft_earned": 22,
+                "usdt_available": "66.00000000",
+                "nft_available": 22,
+                "usdt_withdrawn": "10.00000000",
+                "nft_redeemed": 0
+            }
+        },
+        "step_3_synchronization_fix": {
+            "status": "SUCCESS",
+            "commission_totals": {
+                "total_usdt_earned": "96.00",
+                "total_nft_earned": "16"
+            },
+            "withdrawal_totals": {
+                "total_usdt_withdrawn": "10.00000000",
+                "total_nft_redeemed": "0"
+            },
+            "correct_balances": {
+                "usdt_earned": 96,
+                "nft_earned": 16,
+                "usdt_available": 86,
+                "nft_available": 16,
+                "usdt_withdrawn": 10,
+                "nft_redeemed": 0
+            },
+            "update_successful": true,
+            "tables_synchronized": true
+        },
+        "step_4_integrity_verification": {
+            "status": "SUCCESS",
+            "integrity_valid": true,
+            "updated_balance": {
+                "total_usdt_earned": 96,
+                "total_nft_earned": 16,
+                "available_usdt_balance": 86,
+                "available_nft_balance": 16,
+                "total_usdt_withdrawn": 10,
+                "total_nft_redeemed": 0
+            },
+            "security_system_working": true
+        },
+        "final_assessment": {
+            "overall_status": "SECURITY_ISSUES_FIXED",
+            "working_fixes": 3,
+            "total_fixes": 3,
+            "fix_success_rate": "100%",
+            "fix_results": {
+                "tables_synchronized": true,
+                "integrity_restored": true,
+                "security_system_working": true
+            },
+            "security_system_operational": true,
+            "test_completed_at": "2025-06-18T13:05:15+02:00"
+        }
+    }
+}

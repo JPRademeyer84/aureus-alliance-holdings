@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Frontend Auth</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Frontend Auth Test</h1>
+    <p>This page tests the exact same API call that the React frontend makes.</p>
+    
+    <button onclick="testLogin()">Test Admin Login</button>
+    
+    <div id="results"></div>
+
+    <script>
+        async function testLogin() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<div class="info">Testing login...</div>';
+            
+            try {
+                const apiUrl = 'http://localhost/aureus-angel-alliance/api/admin/auth.php';
+                const requestData = {
+                    action: 'login',
+                    username: 'admin',
+                    password: 'Underdog8406155100085@123!@#'
+                };
+                
+                resultsDiv.innerHTML += `
+                    <div class="info">
+                        <h3>Request Details</h3>
+                        <p><strong>URL:</strong> ${apiUrl}</p>
+                        <p><strong>Method:</strong> POST</p>
+                        <p><strong>Headers:</strong> Content-Type: application/json</p>
+                        <p><strong>Body:</strong></p>
+                        <pre>${JSON.stringify(requestData, null, 2)}</pre>
+                    </div>
+                `;
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                resultsDiv.innerHTML += `
+                    <div class="info">
+                        <h3>Response Details</h3>
+                        <p><strong>Status:</strong> ${response.status} ${response.statusText}</p>
+                        <p><strong>Headers:</strong></p>
+                        <pre>${JSON.stringify(Object.fromEntries(response.headers.entries()), null, 2)}</pre>
+                    </div>
+                `;
+                
+                const responseText = await response.text();
+                
+                resultsDiv.innerHTML += `
+                    <div class="info">
+                        <h3>Raw Response</h3>
+                        <pre>${responseText}</pre>
+                    </div>
+                `;
+                
+                try {
+                    const data = JSON.parse(responseText);
+                    
+                    if (data.success) {
+                        resultsDiv.innerHTML += `
+                            <div class="success">
+                                <h3>✅ Login Successful!</h3>
+                                <pre>${JSON.stringify(data, null, 2)}</pre>
+                            </div>
+                        `;
+                    } else {
+                        resultsDiv.innerHTML += `
+                            <div class="error">
+                                <h3>❌ Login Failed</h3>
+                                <p><strong>Error:</strong> ${data.error || 'Unknown error'}</p>
+                                <pre>${JSON.stringify(data, null, 2)}</pre>
+                            </div>
+                        `;
+                    }
+                } catch (parseError) {
+                    resultsDiv.innerHTML += `
+                        <div class="error">
+                            <h3>❌ JSON Parse Error</h3>
+                            <p>Could not parse response as JSON</p>
+                            <p><strong>Parse Error:</strong> ${parseError.message}</p>
+                        </div>
+                    `;
+                }
+                
+            } catch (error) {
+                resultsDiv.innerHTML += `
+                    <div class="error">
+                        <h3>❌ Network Error</h3>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p>This could be a CORS issue or the API is not responding.</p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

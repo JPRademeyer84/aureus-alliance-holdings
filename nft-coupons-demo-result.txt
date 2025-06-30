@@ -1,0 +1,15 @@
+🎫 NFT COUPONS SYSTEM DEMO
+==========================
+
+STEP 1: Simulating user login...
+✅ Using test user: JPRademeyer
+
+STEP 2: Checking initial credit balance...
+✅ No existing credits - starting fresh
+
+STEP 3: Redeeming coupon TEST25...
+✅ Coupon redeemed successfully!
+   Credits earned: $25.00
+
+STEP 4: Checking updated credit balance...
+❌ DEMO FAILED: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens

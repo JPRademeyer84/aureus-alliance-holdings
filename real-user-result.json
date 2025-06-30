@@ -1,0 +1,99 @@
+{
+    "success": true,
+    "test_type": "Real User Experience Test",
+    "test_results": {
+        "real_user_test": {
+            "step_1_user_login": {
+                "status": "SUCCESS",
+                "user_id": 1,
+                "username": "JPRademeyer",
+                "session_active": true
+            },
+            "step_2_check_balance": {
+                "status": "SUCCESS",
+                "balance": {
+                    "total_usdt_earned": 96,
+                    "total_nft_earned": 16,
+                    "available_usdt_balance": 96,
+                    "available_nft_balance": 16,
+                    "total_usdt_withdrawn": 0,
+                    "total_nft_redeemed": 0
+                },
+                "commission_stats": {
+                    "total_commissions": 8,
+                    "pending_commissions": "0",
+                    "paid_commissions": "8",
+                    "pending_usdt": "0.00",
+                    "pending_nft": "0"
+                },
+                "can_withdraw_usdt": true,
+                "can_withdraw_nft": true,
+                "can_reinvest": true
+            },
+            "step_3_usdt_withdrawal": {
+                "status": "SUCCESS",
+                "withdrawal_result": {
+                    "success": true,
+                    "withdrawal_id": "withdrawal_685296ab3646a0.18839107",
+                    "status": "pending",
+                    "message": "Withdrawal request submitted and queued for processing",
+                    "next_business_day": null
+                },
+                "withdrawal_amount": 10,
+                "withdrawal_type": "usdt"
+            },
+            "step_4_nft_withdrawal": {
+                "status": "SUCCESS",
+                "withdrawal_result": {
+                    "success": true,
+                    "withdrawal_id": "withdrawal_685296ab3a6148.71505656",
+                    "status": "pending",
+                    "message": "Withdrawal request submitted and queued for processing",
+                    "next_business_day": null
+                },
+                "nft_quantity": 2,
+                "withdrawal_type": "nft"
+            },
+            "step_5_reinvestment": {
+                "status": "SUCCESS",
+                "usdt_used": 15,
+                "nft_packs_purchased": 3,
+                "balance_before": {
+                    "total_usdt_earned": 96,
+                    "total_nft_earned": 16,
+                    "available_usdt_balance": 96,
+                    "available_nft_balance": 16,
+                    "total_usdt_withdrawn": 0,
+                    "total_nft_redeemed": 0
+                },
+                "investment_id": "test_reinvest_685296ab3b1572.71081747"
+            },
+            "step_6_final_verification": {
+                "status": "SUCCESS",
+                "final_balance": {
+                    "total_usdt_earned": 96,
+                    "total_nft_earned": 19,
+                    "available_usdt_balance": 81,
+                    "available_nft_balance": 19,
+                    "total_usdt_withdrawn": 0,
+                    "total_nft_redeemed": 0
+                },
+                "integrity_valid": true,
+                "total_withdrawals": 7,
+                "transaction_log_entries": 20,
+                "security_verified": true
+            }
+        },
+        "test_summary": {
+            "overall_status": "ALL_USER_FUNCTIONS_WORKING",
+            "successful_steps": 6,
+            "total_steps": 6,
+            "test_completed_at": "2025-06-18T12:36:27+02:00",
+            "user_can_see_balance": true,
+            "user_can_withdraw_usdt": true,
+            "user_can_withdraw_nft": true,
+            "user_can_reinvest": true,
+            "security_intact": true
+        }
+    }
+}

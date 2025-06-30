@@ -1,0 +1,20 @@
+🔍 TESTING ADMIN SESSION
+========================
+
+Session ID: 46nk5vd5q6amigb1o2opehf9rt
+Session Status: ACTIVE
+
+Session Data:
+❌ Session is empty
+
+Admin Authentication Check:
+❌ No admin_id in session
+
+Cookies:
+❌ No cookies found
+
+Headers:
+
+========================
+🎯 SESSION TEST COMPLETE
+========================

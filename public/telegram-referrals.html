@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referrals - Aureus Angel Alliance</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .app-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+        }
+        
+        .page-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        
+        .page-subtitle {
+            font-size: 16px;
+            color: #cccccc;
+        }
+        
+        .referral-link-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 237, 78, 0.1) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .link-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+        
+        .referral-link {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            color: #cccccc;
+            word-break: break-all;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .link-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .link-btn {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1a1a1a;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+        
+        .link-btn.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.1);
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #cccccc;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .commission-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .commission-highlight {
+            background: rgba(76, 222, 128, 0.1);
+            border: 1px solid rgba(76, 222, 128, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .commission-rate {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4ade80;
+            margin-bottom: 5px;
+        }
+        
+        .commission-text {
+            font-size: 14px;
+            color: #cccccc;
+        }
+        
+        .downline-section {
+            margin-bottom: 25px;
+        }
+        
+        .downline-member {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .member-info {
+            flex: 1;
+        }
+        
+        .member-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+        
+        .member-date {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .member-earnings {
+            text-align: right;
+        }
+        
+        .earnings-amount {
+            font-size: 16px;
+            font-weight: bold;
+            color: #4ade80;
+            margin-bottom: 4px;
+        }
+        
+        .earnings-label {
+            font-size: 12px;
+            color: #cccccc;
+        }
+        
+        .tips-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .tips-list {
+            list-style: none;
+        }
+        
+        .tips-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            color: #cccccc;
+        }
+        
+        .tips-list li::before {
+            content: "💡";
+            font-size: 16px;
+            margin-top: 2px;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: none;
+            border: none;
+            color: #cccccc;
+            font-size: 11px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            padding: 8px;
+            border-radius: 12px;
+            min-width: 60px;
+        }
+        
+        .nav-btn.active {
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+        
+        .nav-btn:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+        
+        .nav-icon {
+            font-size: 22px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #cccccc;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            border-top: 3px solid #ffd700;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 480px) {
+            .app-container {
+                padding: 15px;
+                padding-bottom: 100px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .link-actions {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <div class="page-title">👥 Referral Center</div>
+            <div class="page-subtitle">Earn 20% commission on direct sales</div>
+        </div>
+        
+        <div id="loadingScreen" class="loading">
+            <div class="loading-spinner"></div>
+            <div>Loading your referral data...</div>
+        </div>
+        
+        <div id="referralContent" style="display: none;">
+            <div class="referral-link-section">
+                <div class="link-title">🔗 Your Personal Referral Link</div>
+                <div class="referral-link" id="referralLink">
+                    https://aureusangelalliance.com/register?ref=12345
+                </div>
+                <div class="link-actions">
+                    <button class="link-btn" onclick="copyLink()">
+                        📋 Copy Link
+                    </button>
+                    <button class="link-btn secondary" onclick="shareLink()">
+                        📱 Share
+                    </button>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="directReferrals">3</div>
+                    <div class="stat-label">Direct Referrals</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalEarnings">$150</div>
+                    <div class="stat-label">Total Earnings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="monthlyEarnings">$50</div>
+                    <div class="stat-label">This Month</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="referralRank">🥉 Bronze</div>
+                    <div class="stat-label">Current Rank</div>
+                </div>
+            </div>
+            
+            <div class="commission-section">
+                <div class="section-title">
+                    💰 Commission Structure
+                </div>
+                <div class="commission-highlight">
+                    <div class="commission-rate">20%</div>
+                    <div class="commission-text">Direct sales commission on all referral investments</div>
+                </div>
+            </div>
+            
+            <div class="downline-section">
+                <div class="section-title">
+                    👥 Your Referrals
+                </div>
+                
+                <div class="downline-member">
+                    <div class="member-info">
+                        <div class="member-name">Alex Johnson</div>
+                        <div class="member-date">Joined 2 weeks ago</div>
+                    </div>
+                    <div class="member-earnings">
+                        <div class="earnings-amount">$100</div>
+                        <div class="earnings-label">Your Commission</div>
+                    </div>
+                </div>
+                
+                <div class="downline-member">
+                    <div class="member-info">
+                        <div class="member-name">Sarah Chen</div>
+                        <div class="member-date">Joined 1 week ago</div>
+                    </div>
+                    <div class="member-earnings">
+                        <div class="earnings-amount">$40</div>
+                        <div class="earnings-label">Your Commission</div>
+                    </div>
+                </div>
+                
+                <div class="downline-member">
+                    <div class="member-info">
+                        <div class="member-name">Mike Rodriguez</div>
+                        <div class="member-date">Joined 3 days ago</div>
+                    </div>
+                    <div class="member-earnings">
+                        <div class="earnings-amount">$10</div>
+                        <div class="earnings-label">Your Commission</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tips-section">
+                <div class="section-title">
+                    🎯 Success Tips
+                </div>
+                <ul class="tips-list">
+                    <li>Share your personal investment story and results</li>
+                    <li>Explain the gold mining opportunity and NPO support</li>
+                    <li>Use social media to reach a wider audience</li>
+                    <li>Follow up with interested prospects personally</li>
+                    <li>Show your portfolio growth and dividend earnings</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-nav">
+        <button class="nav-btn" onclick="goHome()">
+            <div class="nav-icon">🏠</div>
+            <div>Home</div>
+        </button>
+        <button class="nav-btn" onclick="viewPortfolio()">
+            <div class="nav-icon">📊</div>
+            <div>Portfolio</div>
+        </button>
+        <button class="nav-btn" onclick="openInvestments()">
+            <div class="nav-icon">📦</div>
+            <div>Invest</div>
+        </button>
+        <button class="nav-btn active">
+            <div class="nav-icon">👥</div>
+            <div>Referrals</div>
+        </button>
+        <button class="nav-btn" onclick="showProfile()">
+            <div class="nav-icon">👤</div>
+            <div>Profile</div>
+        </button>
+    </div>
+
+    <script>
+        // Initialize Telegram Web App
+        const tg = window.Telegram?.WebApp;
+        
+        if (tg) {
+            // Configure the app
+            tg.expand();
+            tg.setHeaderColor('#1a1a1a');
+            tg.setBackgroundColor('#1a1a1a');
+            
+            // Show back button
+            tg.BackButton.show();
+            tg.BackButton.onClick(() => {
+                window.location.href = 'telegram-app.html';
+            });
+        }
+        
+        // Get user data
+        const user = tg?.initDataUnsafe?.user;
+        const telegramId = user?.id;
+        const firstName = user?.first_name || 'Investor';
+        
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+        });
+        
+        function initializeApp() {
+            // Update referral link with actual user ID
+            if (telegramId) {
+                document.getElementById('referralLink').textContent = 
+                    `https://aureusangelalliance.com/register?ref=${telegramId}`;
+            }
+            
+            // Simulate loading referral data
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.getElementById('referralContent').style.display = 'block';
+            }, 1000);
+        }
+        
+        function copyLink() {
+            if (tg) tg.HapticFeedback.impactOccurred('medium');
+            
+            const link = document.getElementById('referralLink').textContent;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(link).then(() => {
+                    if (tg) {
+                        tg.showAlert('Referral link copied to clipboard!');
+                    } else {
+                        alert('Link copied!');
+                    }
+                });
+            } else {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = link;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                if (tg) {
+                    tg.showAlert('Referral link copied!');
+                } else {
+                    alert('Link copied!');
+                }
+            }
+        }
+        
+        function shareLink() {
+            if (tg) tg.HapticFeedback.impactOccurred('medium');
+            
+            const link = document.getElementById('referralLink').textContent;
+            const message = `🌟 Join me in gold mining investments with Aureus Angel Alliance!\n\n💎 Earn dividends from real gold mining\n🌍 Support 28 NPOs worldwide\n📜 Get NFT share certificates\n\n${link}`;
+            
+            if (tg) {
+                // Use Telegram's share functionality
+                tg.switchInlineQuery(message);
+            } else {
+                // Fallback for testing outside Telegram
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Aureus Angel Alliance Investment',
+                        text: message,
+                        url: link
+                    });
+                } else {
+                    copyLink();
+                }
+            }
+        }
+        
+        function goHome() {
+            if (tg) tg.HapticFeedback.impactOccurred('light');
+            window.location.href = 'telegram-app.html';
+        }
+        
+        function viewPortfolio() {
+            if (tg) tg.HapticFeedback.impactOccurred('light');
+            window.location.href = 'telegram-portfolio.html';
+        }
+        
+        function openInvestments() {
+            if (tg) tg.HapticFeedback.impactOccurred('light');
+            window.location.href = 'telegram-invest.html';
+        }
+        
+        function showProfile() {
+            if (tg) tg.HapticFeedback.impactOccurred('light');
+            if (tg) {
+                tg.showAlert(`Profile: ${firstName}\nTelegram ID: ${telegramId}`);
+            } else {
+                alert('Profile feature available in Telegram');
+            }
+        }
+        
+        // Handle haptic feedback for all buttons
+        document.querySelectorAll('.link-btn, .nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (tg) tg.HapticFeedback.impactOccurred('light');
+            });
+        });
+    </script>
+</body>
+</html>

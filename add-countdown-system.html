@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add 180-Day Countdown System - Safe Migration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #cccccc;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .warning-box {
+            background: rgba(255, 193, 7, 0.1);
+            border: 2px solid #FFC107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .warning-box h3 {
+            color: #FFC107;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .warning-box ul {
+            color: #ffffff;
+            margin-left: 20px;
+        }
+        
+        .warning-box li {
+            margin: 5px 0;
+        }
+        
+        .safe-box {
+            background: rgba(76, 175, 80, 0.1);
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .safe-box h3 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .safe-box ul {
+            color: #ffffff;
+            margin-left: 20px;
+        }
+        
+        .safe-box li {
+            margin: 5px 0;
+        }
+        
+        .migrate-btn {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            min-width: 250px;
+        }
+        
+        .migrate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+        
+        .migrate-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .output {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            display: none;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #4CAF50;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .success {
+            color: #4CAF50;
+        }
+        
+        .error {
+            color: #f44336;
+        }
+        
+        .warning {
+            color: #ff9800;
+        }
+        
+        .info {
+            color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo">⏰ 180-DAY COUNTDOWN</h1>
+        <p class="subtitle">Safe Migration - Add to Existing Database</p>
+        
+        <div class="warning-box">
+            <h3>🔒 SAFE MIGRATION GUARANTEE</h3>
+            <ul>
+                <li><strong>NO existing data will be modified or deleted</strong></li>
+                <li><strong>NO tables will be dropped or recreated</strong></li>
+                <li><strong>ONLY new columns and tables will be added</strong></li>
+                <li><strong>Your current investments and users are 100% safe</strong></li>
+            </ul>
+        </div>
+        
+        <div class="safe-box">
+            <h3>✅ What This Migration Will Add:</h3>
+            <ul>
+                <li><strong>Countdown columns</strong> to existing aureus_investments table</li>
+                <li><strong>Delivery dates</strong> for all existing completed investments</li>
+                <li><strong>New delivery_schedule table</strong> for admin management</li>
+                <li><strong>New delivery_notifications table</strong> for automated alerts</li>
+                <li><strong>Optimized countdown view</strong> for fast queries</li>
+                <li><strong>Performance indexes</strong> for countdown queries</li>
+            </ul>
+        </div>
+        
+        <button class="migrate-btn" onclick="runSafeMigration()">
+            🚀 Add Countdown System Safely
+        </button>
+        
+        <div id="output" class="output"></div>
+        
+        <div style="margin-top: 20px; font-size: 0.9rem; color: #cccccc;">
+            <p><strong>Note:</strong> This migration is completely reversible. If you need to remove the countdown system, 
+            we can simply drop the new columns and tables without affecting your existing data.</p>
+        </div>
+    </div>
+
+    <script>
+        async function runSafeMigration() {
+            const btn = event.target;
+            const output = document.getElementById('output');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"></span>Running safe migration...';
+            output.style.display = 'block';
+            output.innerHTML = '🔒 Starting safe migration...\n⚠️  This will NOT modify any existing data\n\n';
+            
+            try {
+                const response = await fetch('api/migrations/add-countdown-system.php', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const text = await response.text();
+                output.innerHTML = formatOutput(text);
+                
+                if (text.includes('MIGRATION COMPLETED SUCCESSFULLY')) {
+                    btn.innerHTML = '✅ Migration Complete';
+                    btn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+                    
+                    // Show success message
+                    setTimeout(() => {
+                        alert('🎉 Success! The 180-day countdown system has been added to your database.\n\n' +
+                              '✅ All existing data is preserved\n' +
+                              '✅ Countdown system is now active\n' +
+                              '✅ New investments will automatically get countdown dates\n\n' +
+                              'You can now use the countdown features in your dashboard!');
+                    }, 1000);
+                    
+                } else if (text.includes('MIGRATION COMPLETED WITH ISSUES')) {
+                    btn.innerHTML = '⚠️ Completed with Issues';
+                    btn.style.background = 'linear-gradient(135deg, #ff9800, #f57c00)';
+                } else {
+                    btn.innerHTML = '❌ Migration Failed';
+                    btn.style.background = 'linear-gradient(135deg, #f44336, #d32f2f)';
+                }
+                
+            } catch (error) {
+                output.innerHTML = `❌ Error: ${error.message}\n\nPlease check:\n• XAMPP is running\n• MySQL service is active\n• Database connection is working\n\nYour existing data is safe and unchanged.`;
+                btn.innerHTML = '❌ Migration Failed';
+                btn.style.background = 'linear-gradient(135deg, #f44336, #d32f2f)';
+            } finally {
+                btn.disabled = false;
+            }
+        }
+        
+        function formatOutput(text) {
+            return text
+                .replace(/✅/g, '<span class="success">✅</span>')
+                .replace(/❌/g, '<span class="error">❌</span>')
+                .replace(/⚠️/g, '<span class="warning">⚠️</span>')
+                .replace(/🔍/g, '<span class="info">🔍</span>')
+                .replace(/📊/g, '<span class="info">📊</span>')
+                .replace(/🎉/g, '<span class="success">🎉</span>')
+                .replace(/🚀/g, '<span class="info">🚀</span>')
+                .replace(/🔒/g, '<span class="warning">🔒</span>')
+                .replace(/🔧/g, '<span class="info">🔧</span>');
+        }
+    </script>
+</body>
+</html>

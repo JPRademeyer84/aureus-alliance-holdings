@@ -1,0 +1,34 @@
+🔧 CREATING NFT COUPONS TABLES
+==============================
+
+Creating nft_coupons table...
+✅ nft_coupons table created
+Creating user_credits table...
+✅ user_credits table created
+Creating credit_transactions table...
+✅ credit_transactions table created
+Adding payment_method column to aureus_investments...
+✅ payment_method column added to aureus_investments
+Creating default coupons...
+✅ Created coupon: WELCOME10 ($10)
+✅ Created coupon: TEST25 ($25)
+✅ Created coupon: PROMO50 ($50)
+
+Verifying tables...
+✅ nft_coupons: 3 records
+✅ user_credits: 0 records
+✅ credit_transactions: 0 records
+
+==============================
+🎉 NFT COUPONS SYSTEM READY!
+==============================
+✅ All tables created successfully
+✅ Default coupons added
+✅ Investment table updated
+
+You can now:
+1. Access admin panel to manage coupons
+2. Users can redeem coupons for credits
+3. Credits can be used for NFT purchases
+
+Setup completed at: 2025-06-18 14:41:29

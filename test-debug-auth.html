@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Auth Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .success { color: green; }
+        .error { color: red; }
+        .warning { color: orange; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        button { padding: 10px 20px; margin: 10px 0; font-size: 16px; }
+        .test-section { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Debug Auth Endpoint Test</h1>
+    <p>This page tests the debug version of the auth endpoint with detailed logging.</p>
+    
+    <div class="test-section">
+        <h2>Test 1: Same Origin Request</h2>
+        <p>Testing from the same domain (localhost:80)</p>
+        <button onclick="testSameOrigin()">Test Same Origin</button>
+        <div id="sameOriginResult"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: Cross Origin Request</h2>
+        <p>Simulating request from frontend (localhost:5173)</p>
+        <button onclick="testCrossOrigin()">Test Cross Origin</button>
+        <div id="crossOriginResult"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 3: OPTIONS Preflight</h2>
+        <p>Testing CORS preflight request</p>
+        <button onclick="testOptions()">Test OPTIONS</button>
+        <div id="optionsResult"></div>
+    </div>
+
+    <script>
+        async function testSameOrigin() {
+            const resultDiv = document.getElementById('sameOriginResult');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const response = await fetch('/aureus-angel-alliance/api/admin/auth-debug.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'login',
+                        username: 'admin',
+                        password: 'Underdog8406155100085@123!@#'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <h3 class="success">✅ Same Origin Test PASSED!</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <h3 class="error">❌ Same Origin Test Failed</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h3 class="error">❌ Same Origin Network Error</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+        
+        async function testCrossOrigin() {
+            const resultDiv = document.getElementById('crossOriginResult');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                // Use full URL to simulate cross-origin request
+                const response = await fetch('http://localhost/aureus-angel-alliance/api/admin/auth-debug.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'login',
+                        username: 'admin',
+                        password: 'Underdog8406155100085@123!@#'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <h3 class="success">✅ Cross Origin Test PASSED!</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <h3 class="error">❌ Cross Origin Test Failed</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h3 class="error">❌ Cross Origin Network Error</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p>This is likely a CORS issue!</p>
+                `;
+            }
+        }
+        
+        async function testOptions() {
+            const resultDiv = document.getElementById('optionsResult');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const response = await fetch('http://localhost/aureus-angel-alliance/api/admin/auth-debug.php', {
+                    method: 'OPTIONS',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                
+                resultDiv.innerHTML = `
+                    <h3 class="success">✅ OPTIONS Request Successful</h3>
+                    <p><strong>Status:</strong> ${response.status}</p>
+                    <p><strong>CORS Headers:</strong></p>
+                    <ul>
+                        <li><strong>Access-Control-Allow-Origin:</strong> ${response.headers.get('Access-Control-Allow-Origin') || 'Not set'}</li>
+                        <li><strong>Access-Control-Allow-Methods:</strong> ${response.headers.get('Access-Control-Allow-Methods') || 'Not set'}</li>
+                        <li><strong>Access-Control-Allow-Headers:</strong> ${response.headers.get('Access-Control-Allow-Headers') || 'Not set'}</li>
+                    </ul>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h3 class="error">❌ OPTIONS Request Failed</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

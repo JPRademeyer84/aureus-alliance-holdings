@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test API Call</title>
+</head>
+<body>
+    <h1>Test Enhanced Profile API</h1>
+    <button onclick="testGet()">Test GET Profile</button>
+    <button onclick="testSave()">Test SAVE Profile</button>
+    <div id="result"></div>
+
+    <script>
+        async function testGet() {
+            try {
+                const response = await fetch('/api/users/enhanced-profile.php?action=get', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+
+                console.log('GET Response status:', response.status);
+                console.log('GET Response headers:', response.headers);
+                
+                const text = await response.text();
+                console.log('GET Raw response:', text);
+                
+                try {
+                    const data = JSON.parse(text);
+                    document.getElementById('result').innerHTML = '<h3>GET Result:</h3><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                } catch (e) {
+                    document.getElementById('result').innerHTML = '<h3>GET Result (Not JSON):</h3><pre>' + text + '</pre>';
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = '<h3>GET Error:</h3>' + error.message;
+            }
+        }
+
+        async function testSave() {
+            try {
+                const response = await fetch('/api/users/enhanced-profile.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        action: 'update',
+                        full_name: 'Test User',
+                        phone: '+1234567890',
+                        country: 'Test Country',
+                        city: 'Test City'
+                    })
+                });
+
+                console.log('POST Response status:', response.status);
+                console.log('POST Response headers:', response.headers);
+                
+                const text = await response.text();
+                console.log('POST Raw response:', text);
+                
+                try {
+                    const data = JSON.parse(text);
+                    document.getElementById('result').innerHTML = '<h3>SAVE Result:</h3><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                } catch (e) {
+                    document.getElementById('result').innerHTML = '<h3>SAVE Result (Not JSON):</h3><pre>' + text + '</pre>';
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = '<h3>SAVE Error:</h3>' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

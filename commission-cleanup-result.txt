@@ -1,0 +1,138 @@
+🔧 COMMISSION PLANS CLEANUP STARTED
+===================================
+
+STEP 1: Analyzing commission_plans table...
+Total commission plans before cleanup: 319
+
+Sample commission plans:
+Plan 1: Default 3-Level Unilevel Plan
+  - USDT: L1=12.00%, L2=5.00%, L3=3.00%
+  - NFT: L1=12.00%, L2=5.00%, L3=3.00%
+  - Active: 1, Default: 1
+  - Created: 2025-06-10 23:04:29
+
+Plan 2: Default 3-Level Unilevel Plan
+  - USDT: L1=12.00%, L2=5.00%, L3=3.00%
+  - NFT: L1=12.00%, L2=5.00%, L3=3.00%
+  - Active: 1, Default: 1
+  - Created: 2025-06-11 00:15:16
+
+Plan 3: Default 3-Level Unilevel Plan
+  - USDT: L1=12.00%, L2=5.00%, L3=3.00%
+  - NFT: L1=12.00%, L2=5.00%, L3=3.00%
+  - Active: 1, Default: 1
+  - Created: 2025-06-11 00:16:49
+
+Plan 4: Default 3-Level Unilevel Plan
+  - USDT: L1=12.00%, L2=5.00%, L3=3.00%
+  - NFT: L1=12.00%, L2=5.00%, L3=3.00%
+  - Active: 1, Default: 1
+  - Created: 2025-06-11 00:16:50
+
+Plan 5: Default 3-Level Unilevel Plan
+  - USDT: L1=12.00%, L2=5.00%, L3=3.00%
+  - NFT: L1=12.00%, L2=5.00%, L3=3.00%
+  - Active: 1, Default: 1
+  - Created: 2025-06-11 00:17:06
+
+Plan 6: Default 3-Level Unilevel Plan
+  - USDT: L1=12.00%, L2=5.00%, L3=3.00%
+  - NFT: L1=12.00%, L2=5.00%, L3=3.00%
+  - Active: 1, Default: 1
+  - Created: 2025-06-11 00:17:10
+
+Plan 7: Default 3-Level Unilevel Plan
+  - USDT: L1=12.00%, L2=5.00%, L3=3.00%
+  - NFT: L1=12.00%, L2=5.00%, L3=3.00%
+  - Active: 1, Default: 1
+  - Created: 2025-06-11 00:17:18
+
+Plan 8: Default 3-Level Unilevel Plan
+  - USDT: L1=12.00%, L2=5.00%, L3=3.00%
+  - NFT: L1=12.00%, L2=5.00%, L3=3.00%
+  - Active: 1, Default: 1
+  - Created: 2025-06-11 00:17:22
+
+Plan 9: Default 3-Level Unilevel Plan
+  - USDT: L1=12.00%, L2=5.00%, L3=3.00%
+  - NFT: L1=12.00%, L2=5.00%, L3=3.00%
+  - Active: 1, Default: 1
+  - Created: 2025-06-11 00:17:35
+
+Plan 10: Default 3-Level Unilevel Plan
+  - USDT: L1=12.00%, L2=5.00%, L3=3.00%
+  - NFT: L1=12.00%, L2=5.00%, L3=3.00%
+  - Active: 1, Default: 1
+  - Created: 2025-06-11 00:17:38
+
+Duplicate groups found: 1
+
+Duplicate commission plans:
+- Default 3-Level Unilevel Plan: 319 copies
+  USDT: 12.00%/5.00%/3.00%
+  NFT: 12.00%/5.00%/3.00%
+
+STEP 2: Checking commission transaction references...
+Commission transactions referencing plans: 0
+✅ Safe to clean up - no transactions reference commission plans
+
+STEP 3: Performing cleanup...
+Keeping oldest plan: Default 3-Level Unilevel Plan (ID: 7fb5a43b-463e-11f0-aa44-088fc31781b4)
+Created: 2025-06-10 23:04:29
+Deleted 318 duplicate commission plans
+Updated remaining plan to be active and default
+✅ Cleanup completed successfully
+
+STEP 4: Verifying cleanup results...
+Total commission plans after cleanup: 1
+
+Remaining commission plan:
+- Name: Default 3-Level Unilevel Plan
+- Description: Standard 3-level unilevel commission structure with USDT and NFT bonuses
+- USDT Commissions: L1=12.00%, L2=5.00%, L3=3.00%
+- NFT Commissions: L1=12.00%, L2=5.00%, L3=3.00%
+- NFT Pack Price: $5.00
+- Minimum Investment: $0.00
+- Active: 1
+- Default: 1
+- Created: 2025-06-10 23:04:29
+
+===================================
+🎉 COMMISSION PLANS CLEANUP COMPLETE!
+===================================
+Summary:
+- Plans before: 319
+- Plans after: 1
+- Plans removed: 318
+- Database clean: ✅ YES
+
+{
+    "success": true,
+    "cleanup_completed": true,
+    "plans_before": 319,
+    "plans_after": 1,
+    "plans_removed": 318,
+    "database_clean": true,
+    "remaining_plan": {
+        "id": "7fb5a43b-463e-11f0-aa44-088fc31781b4",
+        "plan_name": "Default 3-Level Unilevel Plan",
+        "description": "Standard 3-level unilevel commission structure with USDT and NFT bonuses",
+        "is_active": 1,
+        "is_default": 1,
+        "level_1_usdt_percent": "12.00",
+        "level_1_nft_percent": "12.00",
+        "level_2_usdt_percent": "5.00",
+        "level_2_nft_percent": "5.00",
+        "level_3_usdt_percent": "3.00",
+        "level_3_nft_percent": "3.00",
+        "nft_pack_price": "5.00",
+        "nft_total_supply": 200000,
+        "nft_remaining_supply": 200000,
+        "max_levels": 3,
+        "minimum_investment": "0.00",
+        "commission_cap": null,
+        "created_at": "2025-06-10 23:04:29",
+        "updated_at": "2025-06-18 14:00:44",
+        "created_by": null
+    }
+}

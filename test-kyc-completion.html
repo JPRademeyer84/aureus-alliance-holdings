@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test KYC Completion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: white;
+        }
+        .test-section {
+            background-color: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+        }
+        .result {
+            background-color: #333;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            white-space: pre-wrap;
+        }
+        .success { color: #4CAF50; }
+        .error { color: #f44336; }
+        input, select {
+            background-color: #333;
+            color: white;
+            border: 1px solid #555;
+            padding: 8px;
+            margin: 5px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>KYC Completion Test</h1>
+    
+    <div class="test-section">
+        <h2>1. Admin Login</h2>
+        <input type="text" id="adminUsername" placeholder="Admin Username" value="admin">
+        <input type="password" id="adminPassword" placeholder="Admin Password" value="admin123">
+        <button onclick="loginAdmin()">Login as Admin</button>
+        <div id="loginResult" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Get User List</h2>
+        <button onclick="getUserList()">Get Users with KYC Documents</button>
+        <div id="userListResult" class="result"></div>
+        <select id="userSelect" style="width: 100%; margin-top: 10px;">
+            <option value="">Select a user...</option>
+        </select>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Get User Details</h2>
+        <button onclick="getUserDetails()">Get Selected User Details</button>
+        <div id="userDetailsResult" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Complete KYC Verification</h2>
+        <button onclick="completeKYC()">Complete KYC for Selected User</button>
+        <div id="kycCompletionResult" class="result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>5. Verify Results</h2>
+        <button onclick="verifyResults()">Verify KYC Completion</button>
+        <div id="verificationResult" class="result"></div>
+    </div>
+
+    <script>
+        let selectedUserId = null;
+
+        async function loginAdmin() {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            const resultDiv = document.getElementById('loginResult');
+            
+            try {
+                const response = await fetch('/api/admin/auth.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        action: 'login',
+                        username: username,
+                        password: password
+                    })
+                });
+
+                const data = await response.json();
+                resultDiv.textContent = JSON.stringify(data, null, 2);
+                resultDiv.className = data.success ? 'result success' : 'result error';
+            } catch (error) {
+                resultDiv.textContent = 'Error: ' + error.message;
+                resultDiv.className = 'result error';
+            }
+        }
+
+        async function getUserList() {
+            const resultDiv = document.getElementById('userListResult');
+            const userSelect = document.getElementById('userSelect');
+            
+            try {
+                const response = await fetch('/api/admin/kyc-management.php?action=get', {
+                    credentials: 'include'
+                });
+
+                const data = await response.json();
+                resultDiv.textContent = JSON.stringify(data, null, 2);
+                resultDiv.className = data.success ? 'result success' : 'result error';
+
+                // Populate user select dropdown
+                userSelect.innerHTML = '<option value="">Select a user...</option>';
+                if (data.success && data.data.documents) {
+                    data.data.documents.forEach(user => {
+                        const option = document.createElement('option');
+                        option.value = user.user_id;
+                        option.textContent = `${user.full_name || user.username} (${user.email}) - Status: ${user.status}`;
+                        userSelect.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                resultDiv.textContent = 'Error: ' + error.message;
+                resultDiv.className = 'result error';
+            }
+        }
+
+        async function getUserDetails() {
+            const userSelect = document.getElementById('userSelect');
+            const resultDiv = document.getElementById('userDetailsResult');
+            selectedUserId = userSelect.value;
+            
+            if (!selectedUserId) {
+                resultDiv.textContent = 'Please select a user first';
+                resultDiv.className = 'result error';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/admin/manage-users.php?action=get_user&user_id=${selectedUserId}`, {
+                    credentials: 'include'
+                });
+
+                const data = await response.json();
+                resultDiv.textContent = JSON.stringify(data, null, 2);
+                resultDiv.className = data.success ? 'result success' : 'result error';
+            } catch (error) {
+                resultDiv.textContent = 'Error: ' + error.message;
+                resultDiv.className = 'result error';
+            }
+        }
+
+        async function completeKYC() {
+            const resultDiv = document.getElementById('kycCompletionResult');
+            
+            if (!selectedUserId) {
+                resultDiv.textContent = 'Please select a user first';
+                resultDiv.className = 'result error';
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/admin/kyc-management.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        action: 'complete_kyc_verification',
+                        user_id: selectedUserId
+                    })
+                });
+
+                const data = await response.json();
+                resultDiv.textContent = JSON.stringify(data, null, 2);
+                resultDiv.className = data.success ? 'result success' : 'result error';
+            } catch (error) {
+                resultDiv.textContent = 'Error: ' + error.message;
+                resultDiv.className = 'result error';
+            }
+        }
+
+        async function verifyResults() {
+            const resultDiv = document.getElementById('verificationResult');
+            
+            if (!selectedUserId) {
+                resultDiv.textContent = 'Please select a user first';
+                resultDiv.className = 'result error';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/admin/manage-users.php?action=get_user&user_id=${selectedUserId}`, {
+                    credentials: 'include'
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    const user = data.data.user;
+                    const verification = {
+                        user_id: user.id,
+                        username: user.username,
+                        email: user.email,
+                        email_verified: user.email_verified,
+                        kyc_status: user.kyc_status,
+                        kyc_verified_at: user.kyc_verified_at,
+                        facial_verification_status: user.facial_verification_status,
+                        facial_verification_at: user.facial_verification_at,
+                        profile_completion: user.profile_completion
+                    };
+                    
+                    resultDiv.textContent = 'Verification Results:\n' + JSON.stringify(verification, null, 2);
+                    
+                    // Check if all expected fields are properly set
+                    const isComplete = user.kyc_status === 'verified' && 
+                                     user.email_verified && 
+                                     user.profile_completion >= 100;
+                    
+                    resultDiv.className = isComplete ? 'result success' : 'result error';
+                } else {
+                    resultDiv.textContent = JSON.stringify(data, null, 2);
+                    resultDiv.className = 'result error';
+                }
+            } catch (error) {
+                resultDiv.textContent = 'Error: ' + error.message;
+                resultDiv.className = 'result error';
+            }
+        }
+
+        // Auto-populate user select when page loads
+        document.getElementById('userSelect').addEventListener('change', function() {
+            selectedUserId = this.value;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Same Origin Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .success { color: green; }
+        .error { color: red; }
+        .warning { color: orange; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 5px; }
+        button { padding: 10px 20px; margin: 10px 0; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>Same Origin API Test</h1>
+    <p>This page is served from the same domain as the API to test if CORS is the issue.</p>
+    <p><strong>Current URL:</strong> <span id="currentUrl"></span></p>
+    <p><strong>API URL:</strong> <span id="apiUrl"></span></p>
+    
+    <button onclick="testLogin()">Test Admin Login</button>
+    <button onclick="testOptions()">Test OPTIONS Request</button>
+    <button onclick="testGet()">Test GET Request</button>
+    
+    <div id="results"></div>
+
+    <script>
+        // Display current URLs
+        document.getElementById('currentUrl').textContent = window.location.href;
+        document.getElementById('apiUrl').textContent = 'http://localhost/aureus-angel-alliance/api/admin/auth.php';
+        
+        async function testLogin() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<h2>Testing Login...</h2>';
+            
+            try {
+                console.log('Making login request...');
+                
+                const response = await fetch('/aureus-angel-alliance/api/admin/auth.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'login',
+                        username: 'admin',
+                        password: 'Underdog8406155100085@123!@#'
+                    })
+                });
+                
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                
+                const data = await response.json();
+                console.log('Response data:', data);
+                
+                if (data.success) {
+                    resultsDiv.innerHTML = `
+                        <h2 class="success">✅ Login Test PASSED!</h2>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <p><strong>Response:</strong></p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultsDiv.innerHTML = `
+                        <h2 class="error">❌ Login Test Failed</h2>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <p><strong>Error:</strong> ${data.error || 'Unknown error'}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                console.error('Login test error:', error);
+                resultsDiv.innerHTML = `
+                    <h2 class="error">❌ Network Error</h2>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p>This could indicate:</p>
+                    <ul>
+                        <li>CORS configuration issue</li>
+                        <li>API endpoint not accessible</li>
+                        <li>Network connectivity problem</li>
+                    </ul>
+                `;
+            }
+        }
+        
+        async function testOptions() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<h2>Testing OPTIONS Request...</h2>';
+            
+            try {
+                const response = await fetch('/aureus-angel-alliance/api/admin/auth.php', {
+                    method: 'OPTIONS',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                
+                resultsDiv.innerHTML = `
+                    <h2 class="success">✅ OPTIONS Request Successful</h2>
+                    <p><strong>Status:</strong> ${response.status}</p>
+                    <p><strong>CORS Headers:</strong></p>
+                    <ul>
+                        <li><strong>Access-Control-Allow-Origin:</strong> ${response.headers.get('Access-Control-Allow-Origin') || 'Not set'}</li>
+                        <li><strong>Access-Control-Allow-Methods:</strong> ${response.headers.get('Access-Control-Allow-Methods') || 'Not set'}</li>
+                        <li><strong>Access-Control-Allow-Headers:</strong> ${response.headers.get('Access-Control-Allow-Headers') || 'Not set'}</li>
+                    </ul>
+                `;
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <h2 class="error">❌ OPTIONS Request Failed</h2>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+        
+        async function testGet() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<h2>Testing GET Request...</h2>';
+            
+            try {
+                const response = await fetch('/aureus-angel-alliance/api/admin/auth.php', {
+                    method: 'GET'
+                });
+                
+                const text = await response.text();
+                
+                resultsDiv.innerHTML = `
+                    <h2>GET Request Response</h2>
+                    <p><strong>Status:</strong> ${response.status}</p>
+                    <p><strong>Response:</strong></p>
+                    <pre>${text}</pre>
+                `;
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <h2 class="error">❌ GET Request Failed</h2>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

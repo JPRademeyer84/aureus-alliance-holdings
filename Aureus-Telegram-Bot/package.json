@@ -1,0 +1,22 @@
+{
+  "name": "aureus-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot for Aureus Angel Alliance investment platform",
+  "main": "fixed-investment-bot.js",
+  "scripts": {
+    "start": "node fixed-investment-bot.js",
+    "dev": "nodemon fixed-investment-bot.js"
+  },
+  "dependencies": {
+    "telegraf": "^4.16.3",
+    "mysql2": "^3.6.5",
+    "dotenv": "^16.3.1",
+    "nodemailer": "^6.9.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": ["telegram", "bot", "investment", "aureus"],
+  "author": "Aureus Angel Alliance",
+  "license": "MIT"
+}

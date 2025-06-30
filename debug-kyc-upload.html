@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Upload Debug Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+        }
+        .test-section {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+        .success { color: #4ade80; }
+        .error { color: #ef4444; }
+        .warning { color: #fbbf24; }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #2563eb; }
+        input[type="file"] {
+            background: #374151;
+            color: white;
+            padding: 10px;
+            border: 1px solid #6b7280;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        pre {
+            background: #111;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 KYC Upload Debug Test</h1>
+    
+    <div class="test-section">
+        <h2>Step 1: Check Session Status</h2>
+        <button onclick="checkSession()">Check Session</button>
+        <div id="sessionResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Step 2: Test File Upload</h2>
+        <input type="file" id="fileInput" accept="image/*,.pdf">
+        <select id="documentType">
+            <option value="drivers_license">Driver's License</option>
+            <option value="national_id">National ID</option>
+            <option value="passport">Passport</option>
+            <option value="proof_of_address">Proof of Address</option>
+        </select>
+        <br>
+        <button onclick="testUpload()">Test Upload</button>
+        <div id="uploadResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Step 3: Check KYC Status</h2>
+        <button onclick="checkKycStatus()">Check KYC Status</button>
+        <div id="kycResult"></div>
+    </div>
+
+    <script>
+        async function checkSession() {
+            const resultDiv = document.getElementById('sessionResult');
+            try {
+                resultDiv.innerHTML = '<p class="warning">Checking session...</p>';
+                
+                const response = await fetch('http://localhost/aureus-angel-alliance/api/debug/session-status.php', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                
+                const result = await response.json();
+                
+                if (result.user_id) {
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ Session Active</h4>
+                            <pre>${JSON.stringify(result, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ No Active Session</h4>
+                            <pre>${JSON.stringify(result, null, 2)}</pre>
+                            <p>You need to log in first!</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error"><h4>Session Check Error</h4><p>${error.message}</p></div>`;
+            }
+        }
+
+        async function testUpload() {
+            const fileInput = document.getElementById('fileInput');
+            const documentType = document.getElementById('documentType').value;
+            const resultDiv = document.getElementById('uploadResult');
+            
+            if (!fileInput.files[0]) {
+                resultDiv.innerHTML = '<div class="error">Please select a file first!</div>';
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('document', fileInput.files[0]);
+            formData.append('type', documentType);
+            
+            try {
+                resultDiv.innerHTML = '<p class="warning">Uploading...</p>';
+                
+                const response = await fetch('http://localhost/aureus-angel-alliance/api/kyc/upload.php', {
+                    method: 'POST',
+                    credentials: 'include',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ Upload Successful!</h4>
+                            <pre>${JSON.stringify(result, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ Upload Failed</h4>
+                            <pre>${JSON.stringify(result, null, 2)}</pre>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error"><h4>Upload Error</h4><p>${error.message}</p></div>`;
+            }
+        }
+
+        async function checkKycStatus() {
+            const resultDiv = document.getElementById('kycResult');
+            try {
+                resultDiv.innerHTML = '<p class="warning">Checking KYC status...</p>';
+                
+                const response = await fetch('http://localhost/aureus-angel-alliance/api/kyc/status.php', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                
+                const result = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        <h4>KYC Status Response</h4>
+                        <pre>${JSON.stringify(result, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error"><h4>KYC Status Error</h4><p>${error.message}</p></div>`;
+            }
+        }
+
+        // Auto-check session on page load
+        window.onload = function() {
+            checkSession();
+        };
+    </script>
+</body>
+</html>

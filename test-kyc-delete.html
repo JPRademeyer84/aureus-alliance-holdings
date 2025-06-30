@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Delete Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: white;
+        }
+        .test-section {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+        button {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #b91c1c;
+        }
+        button:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+        .result {
+            background: #333;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            white-space: pre-wrap;
+        }
+        .success { border-left: 4px solid #10b981; }
+        .error { border-left: 4px solid #ef4444; }
+        input {
+            background: #333;
+            color: white;
+            border: 1px solid #555;
+            padding: 8px;
+            border-radius: 4px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>KYC Document Delete Test</h1>
+    
+    <div class="test-section">
+        <h3>Test Document Deletion</h3>
+        <p>Enter a document ID to test deletion:</p>
+        <input type="text" id="documentId" placeholder="Enter document UUID" />
+        <br><br>
+        <button onclick="testDelete()">Test Delete</button>
+        <button onclick="testDeleteApproved()">Test Delete Approved (Should Fail)</button>
+        <div id="deleteResult" class="result" style="display: none;"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Test Cases</h3>
+        <ul>
+            <li><strong>Valid UUID (pending document):</strong> Should delete successfully</li>
+            <li><strong>Valid UUID (approved document):</strong> Should fail with "Cannot delete approved documents"</li>
+            <li><strong>Invalid UUID:</strong> Should fail with "Document not found"</li>
+            <li><strong>Empty ID:</strong> Should fail with "Invalid document ID"</li>
+        </ul>
+    </div>
+
+    <script>
+        async function testDelete() {
+            const documentId = document.getElementById('documentId').value.trim();
+            const resultDiv = document.getElementById('deleteResult');
+            
+            if (!documentId) {
+                showResult('Please enter a document ID', 'error');
+                return;
+            }
+
+            try {
+                showResult('Testing delete for ID: ' + documentId + '\nSending request...', '');
+                
+                const response = await fetch(`http://localhost/aureus-angel-alliance/api/kyc/delete.php?id=${documentId}`, {
+                    method: 'DELETE',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const result = await response.json();
+                
+                const statusText = `Status: ${response.status} ${response.statusText}`;
+                const responseText = JSON.stringify(result, null, 2);
+                
+                if (response.ok) {
+                    showResult(`${statusText}\n\nResponse:\n${responseText}`, 'success');
+                } else {
+                    showResult(`${statusText}\n\nResponse:\n${responseText}`, 'error');
+                }
+                
+            } catch (error) {
+                showResult(`Network Error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testDeleteApproved() {
+            // This is a test case for approved documents
+            showResult('This test requires a known approved document ID.\nPlease check your database for an approved document and use its ID.', '');
+        }
+
+        function showResult(message, type) {
+            const resultDiv = document.getElementById('deleteResult');
+            resultDiv.textContent = message;
+            resultDiv.className = `result ${type}`;
+            resultDiv.style.display = 'block';
+        }
+
+        // Test with some common scenarios
+        function runAllTests() {
+            console.log('Running KYC Delete Tests...');
+            
+            // Test empty ID
+            testDeleteWithId('');
+            
+            // Test invalid UUID format
+            setTimeout(() => testDeleteWithId('invalid-id'), 1000);
+            
+            // Test non-existent UUID
+            setTimeout(() => testDeleteWithId('00000000-0000-0000-0000-000000000000'), 2000);
+        }
+
+        async function testDeleteWithId(id) {
+            document.getElementById('documentId').value = id;
+            await testDelete();
+        }
+    </script>
+</body>
+</html>

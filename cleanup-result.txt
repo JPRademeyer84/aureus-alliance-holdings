@@ -1,0 +1,50 @@
+🧹 CLEANING UP DUPLICATE COMMISSION PLANS
+=========================================
+
+✅ Admin session created: admin
+
+1. ANALYZING COMMISSION PLANS:
+==============================
+Total plans found: 25
+  - 'Default 3-Level Unilevel Plan': 25 plans
+
+2. CLEANING UP DUPLICATES:
+==========================
+Processing 'Default 3-Level Unilevel Plan' (25 duplicates):
+  ✅ Keeping: 7fb5a43b-463e-11f0-aa44-088fc31781b4 (created: 2025-06-10 23:04:29)
+  🗑️  Deleted: 535673b7-4c59-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:31:24)
+  🗑️  Deleted: 8b0a0340-4c5a-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:40:07)
+  🗑️  Deleted: 8b06e54d-4c5a-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:40:07)
+  🗑️  Deleted: 8fd0734b-4c5a-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:40:15)
+  🗑️  Deleted: 8fd4d2e6-4c5a-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:40:15)
+  🗑️  Deleted: ad1c3bfa-4c5a-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:41:04)
+  🗑️  Deleted: ad197809-4c5a-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:41:04)
+  🗑️  Deleted: b9048d79-4c5a-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:41:24)
+  🗑️  Deleted: b9049180-4c5a-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:41:24)
+  🗑️  Deleted: c58ba820-4c5a-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:41:45)
+  🗑️  Deleted: c5890389-4c5a-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:41:45)
+  🗑️  Deleted: 0cf82c2f-4c5b-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:43:45)
+  🗑️  Deleted: 0cf570ac-4c5b-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:43:45)
+  🗑️  Deleted: 4810c455-4c5b-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:45:24)
+  🗑️  Deleted: 4810c3c3-4c5b-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:45:24)
+  🗑️  Deleted: 53ffd28f-4c5b-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:45:44)
+  🗑️  Deleted: 53fb497d-4c5b-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:45:44)
+  🗑️  Deleted: 5eb804f2-4c5b-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:46:02)
+  🗑️  Deleted: 5eb7d651-4c5b-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:46:02)
+  🗑️  Deleted: 8d05450a-4c5b-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:47:20)
+  🗑️  Deleted: b9f90431-4c5c-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:55:45)
+  🗑️  Deleted: b9f90656-4c5c-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:55:45)
+  🗑️  Deleted: dbfb92d1-4c5c-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:56:42)
+  🗑️  Deleted: 00f11c01-4c5d-11f0-9d57-088fc31781b4 (created: 2025-06-18 17:57:44)
+  ✅ Confirmed as default plan
+
+3. FINAL RESULTS:
+=================
+Plans deleted: 24
+Plans remaining: 1
+
+Remaining plans:
+  - Default 3-Level Unilevel Plan (DEFAULT) - Created: 2025-06-10 23:04:29
+
+✅ Cleanup completed successfully!
+The commission system should now work properly with clean data.

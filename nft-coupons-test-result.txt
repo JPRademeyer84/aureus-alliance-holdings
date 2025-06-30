@@ -1,0 +1,9 @@
+🎫 NFT COUPONS SYSTEM TEST
+=========================
+
+STEP 1: Checking database tables...
+❌ nft_coupons: Table doesn't exist or error
+❌ user_credits: Table doesn't exist or error
+❌ credit_transactions: Table doesn't exist or error
+
+❌ Some tables are missing. Please run the database migration.

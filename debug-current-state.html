@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Current State</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .feature {
+            background: #2a2a2a;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .enabled { border-left: 4px solid #4ade80; }
+        .disabled { border-left: 4px solid #f87171; }
+        .status {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .status.enabled { background: #4ade80; color: #000; }
+        .status.disabled { background: #f87171; color: #fff; }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #2563eb; }
+        .summary {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .summary.active { border: 2px solid #4ade80; }
+        .summary.inactive { border: 2px solid #f87171; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Debug System Current State</h1>
+    <p>This page shows the actual current state from the database</p>
+
+    <button onclick="loadCurrentState()">🔄 Load Current State</button>
+    <button onclick="testToggle()">🔧 Test Toggle</button>
+
+    <div id="summary"></div>
+    <div id="features"></div>
+
+    <script>
+        async function loadCurrentState() {
+            try {
+                console.log('Loading current state...');
+                
+                const response = await fetch('/api/admin/debug-config.php?action=list', {
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                
+                const data = await response.json();
+                console.log('API Response:', data);
+                
+                if (data.success) {
+                    displayFeatures(data.data);
+                } else {
+                    document.getElementById('features').innerHTML = `
+                        <div style="color: #f87171; text-align: center; padding: 20px;">
+                            ❌ Error: ${data.error || 'Failed to load debug configurations'}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('features').innerHTML = `
+                    <div style="color: #f87171; text-align: center; padding: 20px;">
+                        ❌ Network Error: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        function displayFeatures(configs) {
+            const enabledCount = configs.filter(c => c.is_enabled).length;
+            const totalCount = configs.length;
+            const isActive = enabledCount > 0;
+            
+            // Summary
+            document.getElementById('summary').innerHTML = `
+                <div class="summary ${isActive ? 'active' : 'inactive'}">
+                    <h2>Debug System Status: ${isActive ? '🟢 ACTIVE' : '🔴 INACTIVE'}</h2>
+                    <p><strong>${enabledCount} of ${totalCount}</strong> debug features enabled</p>
+                    <p>Last updated: ${new Date().toLocaleString()}</p>
+                </div>
+            `;
+            
+            // Features
+            const featuresHtml = configs.map(config => {
+                const isEnabled = Boolean(config.is_enabled);
+                const updatedAt = new Date(config.updated_at).toLocaleString();
+                
+                return `
+                    <div class="feature ${isEnabled ? 'enabled' : 'disabled'}">
+                        <div>
+                            <h3>${config.feature_name}</h3>
+                            <p style="color: #888; font-size: 14px;">${config.feature_description}</p>
+                            <p style="color: #666; font-size: 12px;">Updated: ${updatedAt}</p>
+                        </div>
+                        <div>
+                            <span class="status ${isEnabled ? 'enabled' : 'disabled'}">
+                                ${isEnabled ? '🟢 ENABLED' : '🔴 DISABLED'}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('features').innerHTML = featuresHtml;
+        }
+
+        async function testToggle() {
+            try {
+                console.log('Testing toggle for error_tracking...');
+                
+                // Try to toggle error_tracking (should be the only enabled one)
+                const response = await fetch('/api/admin/debug-config.php?action=toggle', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        feature_key: 'error_tracking',
+                        enabled: false  // Try to disable it
+                    })
+                });
+                
+                const data = await response.json();
+                console.log('Toggle response:', data);
+                
+                if (data.success) {
+                    alert('✅ Toggle successful! Reloading state...');
+                    setTimeout(() => loadCurrentState(), 500);
+                } else {
+                    alert('❌ Toggle failed: ' + (data.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Toggle error:', error);
+                alert('❌ Toggle error: ' + error.message);
+            }
+        }
+
+        // Auto-load on page load
+        window.addEventListener('load', () => {
+            loadCurrentState();
+        });
+    </script>
+</body>
+</html>

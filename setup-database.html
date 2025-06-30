@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aureus Angel Alliance - Database Setup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #cccccc;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .setup-btn {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            min-width: 200px;
+        }
+        
+        .setup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .setup-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .output {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            display: none;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #FFD700;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .success {
+            color: #4CAF50;
+        }
+        
+        .error {
+            color: #f44336;
+        }
+        
+        .warning {
+            color: #ff9800;
+        }
+        
+        .info {
+            color: #2196F3;
+        }
+        
+        .feature-list {
+            text-align: left;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
+        .feature-list h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+        
+        .feature-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-list li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo">AUREUS ANGEL ALLIANCE</h1>
+        <p class="subtitle">Database Setup & Configuration</p>
+        
+        <div class="feature-list">
+            <h3>🚀 What will be created:</h3>
+            <ul>
+                <li>Complete user system with KYC & profiles</li>
+                <li>180-day countdown system for NFT & ROI delivery</li>
+                <li>3-level referral & commission system</li>
+                <li>Gold Diggers Club leaderboard ($250K pool)</li>
+                <li>Admin dashboard & user management</li>
+                <li>Live chat & communication system</li>
+                <li>Investment packages & wallet integration</li>
+                <li>Delivery management & notifications</li>
+            </ul>
+        </div>
+        
+        <button class="setup-btn" onclick="runDatabaseSetup()">
+            🔧 Setup Database
+        </button>
+        
+        <button class="setup-btn" onclick="checkDatabaseStatus()">
+            🔍 Check Status
+        </button>
+        
+        <div id="output" class="output"></div>
+    </div>
+
+    <script>
+        async function runDatabaseSetup() {
+            const btn = event.target;
+            const output = document.getElementById('output');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"></span>Setting up database...';
+            output.style.display = 'block';
+            output.innerHTML = '🚀 Starting database setup...\n\n';
+            
+            try {
+                const response = await fetch('api/setup/database-setup.php', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const text = await response.text();
+                output.innerHTML = formatOutput(text);
+                
+                if (text.includes('SETUP COMPLETE') || text.includes('already set up')) {
+                    btn.innerHTML = '✅ Setup Complete';
+                    btn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+                } else {
+                    btn.innerHTML = '❌ Setup Failed';
+                    btn.style.background = 'linear-gradient(135deg, #f44336, #d32f2f)';
+                }
+                
+            } catch (error) {
+                output.innerHTML = `❌ Error: ${error.message}\n\nPlease check:\n• XAMPP is running\n• MySQL service is active\n• Database credentials are correct`;
+                btn.innerHTML = '❌ Setup Failed';
+                btn.style.background = 'linear-gradient(135deg, #f44336, #d32f2f)';
+            } finally {
+                btn.disabled = false;
+            }
+        }
+        
+        async function checkDatabaseStatus() {
+            const btn = event.target;
+            const output = document.getElementById('output');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"></span>Checking...';
+            output.style.display = 'block';
+            output.innerHTML = '🔍 Checking database status...\n\n';
+            
+            try {
+                const response = await fetch('api/setup/database-setup.php');
+                const text = await response.text();
+                output.innerHTML = formatOutput(text);
+                
+            } catch (error) {
+                output.innerHTML = `❌ Error: ${error.message}`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '🔍 Check Status';
+            }
+        }
+        
+        function formatOutput(text) {
+            return text
+                .replace(/✅/g, '<span class="success">✅</span>')
+                .replace(/❌/g, '<span class="error">❌</span>')
+                .replace(/⚠️/g, '<span class="warning">⚠️</span>')
+                .replace(/🔍/g, '<span class="info">🔍</span>')
+                .replace(/📊/g, '<span class="info">📊</span>')
+                .replace(/🎉/g, '<span class="success">🎉</span>')
+                .replace(/🚀/g, '<span class="info">🚀</span>');
+        }
+    </script>
+</body>
+</html>

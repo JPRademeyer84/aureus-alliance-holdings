@@ -1,0 +1,1328 @@
+{
+    "success": true,
+    "investigation_type": "Plan Duplication Investigation",
+    "investigation_results": {
+        "step_1_current_plans": {
+            "status": "SUCCESS",
+            "total_plans": 45,
+            "unique_plans": 4,
+            "duplicate_plans": 41,
+            "plans_by_name": {
+                "Bronze": [
+                    {
+                        "id": "30957d41-45e8-11f0-85ee-088fc31781b4",
+                        "name": "Bronze",
+                        "price": "100.00",
+                        "shares": 10,
+                        "roi": "800.00",
+                        "annual_dividends": "800.00",
+                        "created_at": "2025-06-10 12:46:35",
+                        "updated_at": "2025-06-10 12:46:35",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "954ce4b6-4636-11f0-aa44-088fc31781b4",
+                        "name": "Bronze",
+                        "price": "100.00",
+                        "shares": 10,
+                        "roi": "800.00",
+                        "annual_dividends": "800.00",
+                        "created_at": "2025-06-10 22:07:49",
+                        "updated_at": "2025-06-10 22:07:49",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "2057cf1a-4662-11f0-aa44-088fc31781b4",
+                        "name": "Bronze",
+                        "price": "100.00",
+                        "shares": 10,
+                        "roi": "800.00",
+                        "annual_dividends": "800.00",
+                        "created_at": "2025-06-11 03:19:31",
+                        "updated_at": "2025-06-11 03:19:31",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "26dd46b8-4662-11f0-aa44-088fc31781b4",
+                        "name": "Bronze",
+                        "price": "100.00",
+                        "shares": 10,
+                        "roi": "800.00",
+                        "annual_dividends": "800.00",
+                        "created_at": "2025-06-11 03:19:42",
+                        "updated_at": "2025-06-11 03:19:42",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "296f78a5-4662-11f0-aa44-088fc31781b4",
+                        "name": "Bronze",
+                        "price": "100.00",
+                        "shares": 10,
+                        "roi": "800.00",
+                        "annual_dividends": "800.00",
+                        "created_at": "2025-06-11 03:19:46",
+                        "updated_at": "2025-06-11 03:19:46",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "99fd09b0-4663-11f0-aa44-088fc31781b4",
+                        "name": "Bronze",
+                        "price": "100.00",
+                        "shares": 10,
+                        "roi": "800.00",
+                        "annual_dividends": "800.00",
+                        "created_at": "2025-06-11 03:30:04",
+                        "updated_at": "2025-06-11 03:30:04",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    }
+                ],
+                "Diamond": [
+                    {
+                        "id": "954d4b9d-4636-11f0-aa44-088fc31781b4",
+                        "name": "Diamond",
+                        "price": "2500.00",
+                        "shares": 500,
+                        "roi": "20000.00",
+                        "annual_dividends": "50000.00",
+                        "created_at": "2025-06-10 22:07:49",
+                        "updated_at": "2025-06-10 22:07:49",
+                        "duplicate_count": 5,
+                        "price_duplicate_count": 5
+                    },
+                    {
+                        "id": "2058140c-4662-11f0-aa44-088fc31781b4",
+                        "name": "Diamond",
+                        "price": "2500.00",
+                        "shares": 500,
+                        "roi": "20000.00",
+                        "annual_dividends": "50000.00",
+                        "created_at": "2025-06-11 03:19:31",
+                        "updated_at": "2025-06-11 03:19:31",
+                        "duplicate_count": 5,
+                        "price_duplicate_count": 5
+                    },
+                    {
+                        "id": "26ddad2b-4662-11f0-aa44-088fc31781b4",
+                        "name": "Diamond",
+                        "price": "2500.00",
+                        "shares": 500,
+                        "roi": "20000.00",
+                        "annual_dividends": "50000.00",
+                        "created_at": "2025-06-11 03:19:42",
+                        "updated_at": "2025-06-11 03:19:42",
+                        "duplicate_count": 5,
+                        "price_duplicate_count": 5
+                    },
+                    {
+                        "id": "296fcad0-4662-11f0-aa44-088fc31781b4",
+                        "name": "Diamond",
+                        "price": "2500.00",
+                        "shares": 500,
+                        "roi": "20000.00",
+                        "annual_dividends": "50000.00",
+                        "created_at": "2025-06-11 03:19:46",
+                        "updated_at": "2025-06-11 03:19:46",
+                        "duplicate_count": 5,
+                        "price_duplicate_count": 5
+                    },
+                    {
+                        "id": "99fd5653-4663-11f0-aa44-088fc31781b4",
+                        "name": "Diamond",
+                        "price": "2500.00",
+                        "shares": 500,
+                        "roi": "20000.00",
+                        "annual_dividends": "50000.00",
+                        "created_at": "2025-06-11 03:30:04",
+                        "updated_at": "2025-06-11 03:30:04",
+                        "duplicate_count": 5,
+                        "price_duplicate_count": 5
+                    }
+                ],
+                "Gold": [
+                    {
+                        "id": "30959d36-45e8-11f0-85ee-088fc31781b4",
+                        "name": "Gold",
+                        "price": "500.00",
+                        "shares": 75,
+                        "roi": "4000.00",
+                        "annual_dividends": "6000.00",
+                        "created_at": "2025-06-10 12:46:35",
+                        "updated_at": "2025-06-10 12:46:35",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 7
+                    },
+                    {
+                        "id": "954d1afa-4636-11f0-aa44-088fc31781b4",
+                        "name": "Gold",
+                        "price": "500.00",
+                        "shares": 75,
+                        "roi": "4000.00",
+                        "annual_dividends": "6000.00",
+                        "created_at": "2025-06-10 22:07:49",
+                        "updated_at": "2025-06-10 22:07:49",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 7
+                    },
+                    {
+                        "id": "2057f05f-4662-11f0-aa44-088fc31781b4",
+                        "name": "Gold",
+                        "price": "500.00",
+                        "shares": 75,
+                        "roi": "4000.00",
+                        "annual_dividends": "6000.00",
+                        "created_at": "2025-06-11 03:19:31",
+                        "updated_at": "2025-06-11 03:19:31",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 7
+                    },
+                    {
+                        "id": "26dd7692-4662-11f0-aa44-088fc31781b4",
+                        "name": "Gold",
+                        "price": "500.00",
+                        "shares": 75,
+                        "roi": "4000.00",
+                        "annual_dividends": "6000.00",
+                        "created_at": "2025-06-11 03:19:42",
+                        "updated_at": "2025-06-11 03:19:42",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 7
+                    },
+                    {
+                        "id": "296fa133-4662-11f0-aa44-088fc31781b4",
+                        "name": "Gold",
+                        "price": "500.00",
+                        "shares": 75,
+                        "roi": "4000.00",
+                        "annual_dividends": "6000.00",
+                        "created_at": "2025-06-11 03:19:46",
+                        "updated_at": "2025-06-11 03:19:46",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 7
+                    },
+                    {
+                        "id": "99fd3717-4663-11f0-aa44-088fc31781b4",
+                        "name": "Gold",
+                        "price": "500.00",
+                        "shares": 75,
+                        "roi": "4000.00",
+                        "annual_dividends": "6000.00",
+                        "created_at": "2025-06-11 03:30:04",
+                        "updated_at": "2025-06-11 03:30:04",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 7
+                    }
+                ],
+                "Obsidian": [
+                    {
+                        "id": "82284638-45e6-11f0-85ee-088fc31781b4",
+                        "name": "Obsidian",
+                        "price": "50000.00",
+                        "shares": 12500,
+                        "roi": "250000.00",
+                        "annual_dividends": "1000000.00",
+                        "created_at": "2025-06-10 12:34:32",
+                        "updated_at": "2025-06-10 12:34:32",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "954d6db4-4636-11f0-aa44-088fc31781b4",
+                        "name": "Obsidian",
+                        "price": "50000.00",
+                        "shares": 12500,
+                        "roi": "250000.00",
+                        "annual_dividends": "1000000.00",
+                        "created_at": "2025-06-10 22:07:49",
+                        "updated_at": "2025-06-10 22:07:49",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "20582602-4662-11f0-aa44-088fc31781b4",
+                        "name": "Obsidian",
+                        "price": "50000.00",
+                        "shares": 12500,
+                        "roi": "250000.00",
+                        "annual_dividends": "1000000.00",
+                        "created_at": "2025-06-11 03:19:31",
+                        "updated_at": "2025-06-11 03:19:31",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "26ddbf2f-4662-11f0-aa44-088fc31781b4",
+                        "name": "Obsidian",
+                        "price": "50000.00",
+                        "shares": 12500,
+                        "roi": "250000.00",
+                        "annual_dividends": "1000000.00",
+                        "created_at": "2025-06-11 03:19:42",
+                        "updated_at": "2025-06-11 03:19:42",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "296fdd81-4662-11f0-aa44-088fc31781b4",
+                        "name": "Obsidian",
+                        "price": "50000.00",
+                        "shares": 12500,
+                        "roi": "250000.00",
+                        "annual_dividends": "1000000.00",
+                        "created_at": "2025-06-11 03:19:46",
+                        "updated_at": "2025-06-11 03:19:46",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "99fd6527-4663-11f0-aa44-088fc31781b4",
+                        "name": "Obsidian",
+                        "price": "50000.00",
+                        "shares": 12500,
+                        "roi": "250000.00",
+                        "annual_dividends": "1000000.00",
+                        "created_at": "2025-06-11 03:30:04",
+                        "updated_at": "2025-06-11 03:30:04",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    }
+                ],
+                "Platinum": [
+                    {
+                        "id": "82281c9f-45e6-11f0-85ee-088fc31781b4",
+                        "name": "Platinum",
+                        "price": "1000.00",
+                        "shares": 175,
+                        "roi": "8000.00",
+                        "annual_dividends": "15000.00",
+                        "created_at": "2025-06-10 12:34:32",
+                        "updated_at": "2025-06-10 12:34:32",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "954d2fac-4636-11f0-aa44-088fc31781b4",
+                        "name": "Platinum",
+                        "price": "1000.00",
+                        "shares": 175,
+                        "roi": "8000.00",
+                        "annual_dividends": "15000.00",
+                        "created_at": "2025-06-10 22:07:49",
+                        "updated_at": "2025-06-10 22:07:49",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "205801c7-4662-11f0-aa44-088fc31781b4",
+                        "name": "Platinum",
+                        "price": "1000.00",
+                        "shares": 175,
+                        "roi": "8000.00",
+                        "annual_dividends": "15000.00",
+                        "created_at": "2025-06-11 03:19:31",
+                        "updated_at": "2025-06-11 03:19:31",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "26dd9656-4662-11f0-aa44-088fc31781b4",
+                        "name": "Platinum",
+                        "price": "1000.00",
+                        "shares": 175,
+                        "roi": "8000.00",
+                        "annual_dividends": "15000.00",
+                        "created_at": "2025-06-11 03:19:42",
+                        "updated_at": "2025-06-11 03:19:42",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "296fb18e-4662-11f0-aa44-088fc31781b4",
+                        "name": "Platinum",
+                        "price": "1000.00",
+                        "shares": 175,
+                        "roi": "8000.00",
+                        "annual_dividends": "15000.00",
+                        "created_at": "2025-06-11 03:19:46",
+                        "updated_at": "2025-06-11 03:19:46",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "99fd46ba-4663-11f0-aa44-088fc31781b4",
+                        "name": "Platinum",
+                        "price": "1000.00",
+                        "shares": 175,
+                        "roi": "8000.00",
+                        "annual_dividends": "15000.00",
+                        "created_at": "2025-06-11 03:30:04",
+                        "updated_at": "2025-06-11 03:30:04",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    }
+                ],
+                "Silver": [
+                    {
+                        "id": "82280c29-45e6-11f0-85ee-088fc31781b4",
+                        "name": "Silver",
+                        "price": "250.00",
+                        "shares": 30,
+                        "roi": "2000.00",
+                        "annual_dividends": "2500.00",
+                        "created_at": "2025-06-10 12:34:32",
+                        "updated_at": "2025-06-10 12:34:32",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "954cffb7-4636-11f0-aa44-088fc31781b4",
+                        "name": "Silver",
+                        "price": "250.00",
+                        "shares": 30,
+                        "roi": "2000.00",
+                        "annual_dividends": "2500.00",
+                        "created_at": "2025-06-10 22:07:49",
+                        "updated_at": "2025-06-10 22:07:49",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "2057dfa2-4662-11f0-aa44-088fc31781b4",
+                        "name": "Silver",
+                        "price": "250.00",
+                        "shares": 30,
+                        "roi": "2000.00",
+                        "annual_dividends": "2500.00",
+                        "created_at": "2025-06-11 03:19:31",
+                        "updated_at": "2025-06-11 03:19:31",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "26dd60e2-4662-11f0-aa44-088fc31781b4",
+                        "name": "Silver",
+                        "price": "250.00",
+                        "shares": 30,
+                        "roi": "2000.00",
+                        "annual_dividends": "2500.00",
+                        "created_at": "2025-06-11 03:19:42",
+                        "updated_at": "2025-06-11 03:19:42",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "296f8cf1-4662-11f0-aa44-088fc31781b4",
+                        "name": "Silver",
+                        "price": "250.00",
+                        "shares": 30,
+                        "roi": "2000.00",
+                        "annual_dividends": "2500.00",
+                        "created_at": "2025-06-11 03:19:46",
+                        "updated_at": "2025-06-11 03:19:46",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "99fd24f9-4663-11f0-aa44-088fc31781b4",
+                        "name": "Silver",
+                        "price": "250.00",
+                        "shares": 30,
+                        "roi": "2000.00",
+                        "annual_dividends": "2500.00",
+                        "created_at": "2025-06-11 03:30:04",
+                        "updated_at": "2025-06-11 03:30:04",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    }
+                ],
+                "Starter": [
+                    {
+                        "id": "30956439-45e8-11f0-85ee-088fc31781b4",
+                        "name": "Starter",
+                        "price": "50.00",
+                        "shares": 2,
+                        "roi": "400.00",
+                        "annual_dividends": "200.00",
+                        "created_at": "2025-06-10 12:46:35",
+                        "updated_at": "2025-06-10 12:46:35",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "954caf11-4636-11f0-aa44-088fc31781b4",
+                        "name": "Starter",
+                        "price": "50.00",
+                        "shares": 2,
+                        "roi": "400.00",
+                        "annual_dividends": "200.00",
+                        "created_at": "2025-06-10 22:07:49",
+                        "updated_at": "2025-06-10 22:07:49",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "2057b31b-4662-11f0-aa44-088fc31781b4",
+                        "name": "Starter",
+                        "price": "50.00",
+                        "shares": 2,
+                        "roi": "400.00",
+                        "annual_dividends": "200.00",
+                        "created_at": "2025-06-11 03:19:31",
+                        "updated_at": "2025-06-11 03:19:31",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "26dd2e5c-4662-11f0-aa44-088fc31781b4",
+                        "name": "Starter",
+                        "price": "50.00",
+                        "shares": 2,
+                        "roi": "400.00",
+                        "annual_dividends": "200.00",
+                        "created_at": "2025-06-11 03:19:42",
+                        "updated_at": "2025-06-11 03:19:42",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "296f5df3-4662-11f0-aa44-088fc31781b4",
+                        "name": "Starter",
+                        "price": "50.00",
+                        "shares": 2,
+                        "roi": "400.00",
+                        "annual_dividends": "200.00",
+                        "created_at": "2025-06-11 03:19:46",
+                        "updated_at": "2025-06-11 03:19:46",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    },
+                    {
+                        "id": "99fcebf9-4663-11f0-aa44-088fc31781b4",
+                        "name": "Starter",
+                        "price": "50.00",
+                        "shares": 2,
+                        "roi": "400.00",
+                        "annual_dividends": "200.00",
+                        "created_at": "2025-06-11 03:30:04",
+                        "updated_at": "2025-06-11 03:30:04",
+                        "duplicate_count": 6,
+                        "price_duplicate_count": 6
+                    }
+                ],
+                "Summ": [
+                    {
+                        "id": "a38ff983-448d-11f0-aa82-088fc31781b4",
+                        "name": "Summ",
+                        "price": "123465.00",
+                        "shares": 123,
+                        "roi": "987654.00",
+                        "annual_dividends": "159753.00",
+                        "created_at": "2025-06-08 19:25:57",
+                        "updated_at": "2025-06-08 19:25:57",
+                        "duplicate_count": 1,
+                        "price_duplicate_count": 1
+                    }
+                ],
+                "Supreme": [
+                    {
+                        "id": "a72e8a01-4525-11f0-85ee-088fc31781b4",
+                        "name": "Supreme",
+                        "price": "52.00",
+                        "shares": 800,
+                        "roi": "5200.00",
+                        "annual_dividends": "420.00",
+                        "created_at": "2025-06-09 13:34:06",
+                        "updated_at": "2025-06-09 13:34:06",
+                        "duplicate_count": 1,
+                        "price_duplicate_count": 1
+                    }
+                ],
+                "testing": [
+                    {
+                        "id": "c39aa406-448c-11f0-aa82-088fc31781b4",
+                        "name": "testing",
+                        "price": "500.00",
+                        "shares": 50,
+                        "roi": "2500.00",
+                        "annual_dividends": "5648.00",
+                        "created_at": "2025-06-08 19:19:41",
+                        "updated_at": "2025-06-08 19:23:17",
+                        "duplicate_count": 1,
+                        "price_duplicate_count": 7
+                    }
+                ],
+                "Thunder": [
+                    {
+                        "id": "fbceaebe-45fd-11f0-aa44-088fc31781b4",
+                        "name": "Thunder",
+                        "price": "0.10",
+                        "shares": 10,
+                        "roi": "100.00",
+                        "annual_dividends": "120.00",
+                        "created_at": "2025-06-10 15:22:40",
+                        "updated_at": "2025-06-10 15:22:40",
+                        "duplicate_count": 1,
+                        "price_duplicate_count": 1
+                    }
+                ]
+            },
+            "all_plans": [
+                {
+                    "id": "30957d41-45e8-11f0-85ee-088fc31781b4",
+                    "name": "Bronze",
+                    "price": "100.00",
+                    "shares": 10,
+                    "roi": "800.00",
+                    "annual_dividends": "800.00",
+                    "created_at": "2025-06-10 12:46:35",
+                    "updated_at": "2025-06-10 12:46:35",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "954ce4b6-4636-11f0-aa44-088fc31781b4",
+                    "name": "Bronze",
+                    "price": "100.00",
+                    "shares": 10,
+                    "roi": "800.00",
+                    "annual_dividends": "800.00",
+                    "created_at": "2025-06-10 22:07:49",
+                    "updated_at": "2025-06-10 22:07:49",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "2057cf1a-4662-11f0-aa44-088fc31781b4",
+                    "name": "Bronze",
+                    "price": "100.00",
+                    "shares": 10,
+                    "roi": "800.00",
+                    "annual_dividends": "800.00",
+                    "created_at": "2025-06-11 03:19:31",
+                    "updated_at": "2025-06-11 03:19:31",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "26dd46b8-4662-11f0-aa44-088fc31781b4",
+                    "name": "Bronze",
+                    "price": "100.00",
+                    "shares": 10,
+                    "roi": "800.00",
+                    "annual_dividends": "800.00",
+                    "created_at": "2025-06-11 03:19:42",
+                    "updated_at": "2025-06-11 03:19:42",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "296f78a5-4662-11f0-aa44-088fc31781b4",
+                    "name": "Bronze",
+                    "price": "100.00",
+                    "shares": 10,
+                    "roi": "800.00",
+                    "annual_dividends": "800.00",
+                    "created_at": "2025-06-11 03:19:46",
+                    "updated_at": "2025-06-11 03:19:46",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "99fd09b0-4663-11f0-aa44-088fc31781b4",
+                    "name": "Bronze",
+                    "price": "100.00",
+                    "shares": 10,
+                    "roi": "800.00",
+                    "annual_dividends": "800.00",
+                    "created_at": "2025-06-11 03:30:04",
+                    "updated_at": "2025-06-11 03:30:04",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "954d4b9d-4636-11f0-aa44-088fc31781b4",
+                    "name": "Diamond",
+                    "price": "2500.00",
+                    "shares": 500,
+                    "roi": "20000.00",
+                    "annual_dividends": "50000.00",
+                    "created_at": "2025-06-10 22:07:49",
+                    "updated_at": "2025-06-10 22:07:49",
+                    "duplicate_count": 5,
+                    "price_duplicate_count": 5
+                },
+                {
+                    "id": "2058140c-4662-11f0-aa44-088fc31781b4",
+                    "name": "Diamond",
+                    "price": "2500.00",
+                    "shares": 500,
+                    "roi": "20000.00",
+                    "annual_dividends": "50000.00",
+                    "created_at": "2025-06-11 03:19:31",
+                    "updated_at": "2025-06-11 03:19:31",
+                    "duplicate_count": 5,
+                    "price_duplicate_count": 5
+                },
+                {
+                    "id": "26ddad2b-4662-11f0-aa44-088fc31781b4",
+                    "name": "Diamond",
+                    "price": "2500.00",
+                    "shares": 500,
+                    "roi": "20000.00",
+                    "annual_dividends": "50000.00",
+                    "created_at": "2025-06-11 03:19:42",
+                    "updated_at": "2025-06-11 03:19:42",
+                    "duplicate_count": 5,
+                    "price_duplicate_count": 5
+                },
+                {
+                    "id": "296fcad0-4662-11f0-aa44-088fc31781b4",
+                    "name": "Diamond",
+                    "price": "2500.00",
+                    "shares": 500,
+                    "roi": "20000.00",
+                    "annual_dividends": "50000.00",
+                    "created_at": "2025-06-11 03:19:46",
+                    "updated_at": "2025-06-11 03:19:46",
+                    "duplicate_count": 5,
+                    "price_duplicate_count": 5
+                },
+                {
+                    "id": "99fd5653-4663-11f0-aa44-088fc31781b4",
+                    "name": "Diamond",
+                    "price": "2500.00",
+                    "shares": 500,
+                    "roi": "20000.00",
+                    "annual_dividends": "50000.00",
+                    "created_at": "2025-06-11 03:30:04",
+                    "updated_at": "2025-06-11 03:30:04",
+                    "duplicate_count": 5,
+                    "price_duplicate_count": 5
+                },
+                {
+                    "id": "30959d36-45e8-11f0-85ee-088fc31781b4",
+                    "name": "Gold",
+                    "price": "500.00",
+                    "shares": 75,
+                    "roi": "4000.00",
+                    "annual_dividends": "6000.00",
+                    "created_at": "2025-06-10 12:46:35",
+                    "updated_at": "2025-06-10 12:46:35",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 7
+                },
+                {
+                    "id": "954d1afa-4636-11f0-aa44-088fc31781b4",
+                    "name": "Gold",
+                    "price": "500.00",
+                    "shares": 75,
+                    "roi": "4000.00",
+                    "annual_dividends": "6000.00",
+                    "created_at": "2025-06-10 22:07:49",
+                    "updated_at": "2025-06-10 22:07:49",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 7
+                },
+                {
+                    "id": "2057f05f-4662-11f0-aa44-088fc31781b4",
+                    "name": "Gold",
+                    "price": "500.00",
+                    "shares": 75,
+                    "roi": "4000.00",
+                    "annual_dividends": "6000.00",
+                    "created_at": "2025-06-11 03:19:31",
+                    "updated_at": "2025-06-11 03:19:31",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 7
+                },
+                {
+                    "id": "26dd7692-4662-11f0-aa44-088fc31781b4",
+                    "name": "Gold",
+                    "price": "500.00",
+                    "shares": 75,
+                    "roi": "4000.00",
+                    "annual_dividends": "6000.00",
+                    "created_at": "2025-06-11 03:19:42",
+                    "updated_at": "2025-06-11 03:19:42",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 7
+                },
+                {
+                    "id": "296fa133-4662-11f0-aa44-088fc31781b4",
+                    "name": "Gold",
+                    "price": "500.00",
+                    "shares": 75,
+                    "roi": "4000.00",
+                    "annual_dividends": "6000.00",
+                    "created_at": "2025-06-11 03:19:46",
+                    "updated_at": "2025-06-11 03:19:46",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 7
+                },
+                {
+                    "id": "99fd3717-4663-11f0-aa44-088fc31781b4",
+                    "name": "Gold",
+                    "price": "500.00",
+                    "shares": 75,
+                    "roi": "4000.00",
+                    "annual_dividends": "6000.00",
+                    "created_at": "2025-06-11 03:30:04",
+                    "updated_at": "2025-06-11 03:30:04",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 7
+                },
+                {
+                    "id": "82284638-45e6-11f0-85ee-088fc31781b4",
+                    "name": "Obsidian",
+                    "price": "50000.00",
+                    "shares": 12500,
+                    "roi": "250000.00",
+                    "annual_dividends": "1000000.00",
+                    "created_at": "2025-06-10 12:34:32",
+                    "updated_at": "2025-06-10 12:34:32",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "954d6db4-4636-11f0-aa44-088fc31781b4",
+                    "name": "Obsidian",
+                    "price": "50000.00",
+                    "shares": 12500,
+                    "roi": "250000.00",
+                    "annual_dividends": "1000000.00",
+                    "created_at": "2025-06-10 22:07:49",
+                    "updated_at": "2025-06-10 22:07:49",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "20582602-4662-11f0-aa44-088fc31781b4",
+                    "name": "Obsidian",
+                    "price": "50000.00",
+                    "shares": 12500,
+                    "roi": "250000.00",
+                    "annual_dividends": "1000000.00",
+                    "created_at": "2025-06-11 03:19:31",
+                    "updated_at": "2025-06-11 03:19:31",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "26ddbf2f-4662-11f0-aa44-088fc31781b4",
+                    "name": "Obsidian",
+                    "price": "50000.00",
+                    "shares": 12500,
+                    "roi": "250000.00",
+                    "annual_dividends": "1000000.00",
+                    "created_at": "2025-06-11 03:19:42",
+                    "updated_at": "2025-06-11 03:19:42",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "296fdd81-4662-11f0-aa44-088fc31781b4",
+                    "name": "Obsidian",
+                    "price": "50000.00",
+                    "shares": 12500,
+                    "roi": "250000.00",
+                    "annual_dividends": "1000000.00",
+                    "created_at": "2025-06-11 03:19:46",
+                    "updated_at": "2025-06-11 03:19:46",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "99fd6527-4663-11f0-aa44-088fc31781b4",
+                    "name": "Obsidian",
+                    "price": "50000.00",
+                    "shares": 12500,
+                    "roi": "250000.00",
+                    "annual_dividends": "1000000.00",
+                    "created_at": "2025-06-11 03:30:04",
+                    "updated_at": "2025-06-11 03:30:04",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "82281c9f-45e6-11f0-85ee-088fc31781b4",
+                    "name": "Platinum",
+                    "price": "1000.00",
+                    "shares": 175,
+                    "roi": "8000.00",
+                    "annual_dividends": "15000.00",
+                    "created_at": "2025-06-10 12:34:32",
+                    "updated_at": "2025-06-10 12:34:32",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "954d2fac-4636-11f0-aa44-088fc31781b4",
+                    "name": "Platinum",
+                    "price": "1000.00",
+                    "shares": 175,
+                    "roi": "8000.00",
+                    "annual_dividends": "15000.00",
+                    "created_at": "2025-06-10 22:07:49",
+                    "updated_at": "2025-06-10 22:07:49",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "205801c7-4662-11f0-aa44-088fc31781b4",
+                    "name": "Platinum",
+                    "price": "1000.00",
+                    "shares": 175,
+                    "roi": "8000.00",
+                    "annual_dividends": "15000.00",
+                    "created_at": "2025-06-11 03:19:31",
+                    "updated_at": "2025-06-11 03:19:31",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "26dd9656-4662-11f0-aa44-088fc31781b4",
+                    "name": "Platinum",
+                    "price": "1000.00",
+                    "shares": 175,
+                    "roi": "8000.00",
+                    "annual_dividends": "15000.00",
+                    "created_at": "2025-06-11 03:19:42",
+                    "updated_at": "2025-06-11 03:19:42",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "296fb18e-4662-11f0-aa44-088fc31781b4",
+                    "name": "Platinum",
+                    "price": "1000.00",
+                    "shares": 175,
+                    "roi": "8000.00",
+                    "annual_dividends": "15000.00",
+                    "created_at": "2025-06-11 03:19:46",
+                    "updated_at": "2025-06-11 03:19:46",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "99fd46ba-4663-11f0-aa44-088fc31781b4",
+                    "name": "Platinum",
+                    "price": "1000.00",
+                    "shares": 175,
+                    "roi": "8000.00",
+                    "annual_dividends": "15000.00",
+                    "created_at": "2025-06-11 03:30:04",
+                    "updated_at": "2025-06-11 03:30:04",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "82280c29-45e6-11f0-85ee-088fc31781b4",
+                    "name": "Silver",
+                    "price": "250.00",
+                    "shares": 30,
+                    "roi": "2000.00",
+                    "annual_dividends": "2500.00",
+                    "created_at": "2025-06-10 12:34:32",
+                    "updated_at": "2025-06-10 12:34:32",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "954cffb7-4636-11f0-aa44-088fc31781b4",
+                    "name": "Silver",
+                    "price": "250.00",
+                    "shares": 30,
+                    "roi": "2000.00",
+                    "annual_dividends": "2500.00",
+                    "created_at": "2025-06-10 22:07:49",
+                    "updated_at": "2025-06-10 22:07:49",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "2057dfa2-4662-11f0-aa44-088fc31781b4",
+                    "name": "Silver",
+                    "price": "250.00",
+                    "shares": 30,
+                    "roi": "2000.00",
+                    "annual_dividends": "2500.00",
+                    "created_at": "2025-06-11 03:19:31",
+                    "updated_at": "2025-06-11 03:19:31",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "26dd60e2-4662-11f0-aa44-088fc31781b4",
+                    "name": "Silver",
+                    "price": "250.00",
+                    "shares": 30,
+                    "roi": "2000.00",
+                    "annual_dividends": "2500.00",
+                    "created_at": "2025-06-11 03:19:42",
+                    "updated_at": "2025-06-11 03:19:42",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "296f8cf1-4662-11f0-aa44-088fc31781b4",
+                    "name": "Silver",
+                    "price": "250.00",
+                    "shares": 30,
+                    "roi": "2000.00",
+                    "annual_dividends": "2500.00",
+                    "created_at": "2025-06-11 03:19:46",
+                    "updated_at": "2025-06-11 03:19:46",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "99fd24f9-4663-11f0-aa44-088fc31781b4",
+                    "name": "Silver",
+                    "price": "250.00",
+                    "shares": 30,
+                    "roi": "2000.00",
+                    "annual_dividends": "2500.00",
+                    "created_at": "2025-06-11 03:30:04",
+                    "updated_at": "2025-06-11 03:30:04",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "30956439-45e8-11f0-85ee-088fc31781b4",
+                    "name": "Starter",
+                    "price": "50.00",
+                    "shares": 2,
+                    "roi": "400.00",
+                    "annual_dividends": "200.00",
+                    "created_at": "2025-06-10 12:46:35",
+                    "updated_at": "2025-06-10 12:46:35",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "954caf11-4636-11f0-aa44-088fc31781b4",
+                    "name": "Starter",
+                    "price": "50.00",
+                    "shares": 2,
+                    "roi": "400.00",
+                    "annual_dividends": "200.00",
+                    "created_at": "2025-06-10 22:07:49",
+                    "updated_at": "2025-06-10 22:07:49",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "2057b31b-4662-11f0-aa44-088fc31781b4",
+                    "name": "Starter",
+                    "price": "50.00",
+                    "shares": 2,
+                    "roi": "400.00",
+                    "annual_dividends": "200.00",
+                    "created_at": "2025-06-11 03:19:31",
+                    "updated_at": "2025-06-11 03:19:31",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "26dd2e5c-4662-11f0-aa44-088fc31781b4",
+                    "name": "Starter",
+                    "price": "50.00",
+                    "shares": 2,
+                    "roi": "400.00",
+                    "annual_dividends": "200.00",
+                    "created_at": "2025-06-11 03:19:42",
+                    "updated_at": "2025-06-11 03:19:42",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "296f5df3-4662-11f0-aa44-088fc31781b4",
+                    "name": "Starter",
+                    "price": "50.00",
+                    "shares": 2,
+                    "roi": "400.00",
+                    "annual_dividends": "200.00",
+                    "created_at": "2025-06-11 03:19:46",
+                    "updated_at": "2025-06-11 03:19:46",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "99fcebf9-4663-11f0-aa44-088fc31781b4",
+                    "name": "Starter",
+                    "price": "50.00",
+                    "shares": 2,
+                    "roi": "400.00",
+                    "annual_dividends": "200.00",
+                    "created_at": "2025-06-11 03:30:04",
+                    "updated_at": "2025-06-11 03:30:04",
+                    "duplicate_count": 6,
+                    "price_duplicate_count": 6
+                },
+                {
+                    "id": "a38ff983-448d-11f0-aa82-088fc31781b4",
+                    "name": "Summ",
+                    "price": "123465.00",
+                    "shares": 123,
+                    "roi": "987654.00",
+                    "annual_dividends": "159753.00",
+                    "created_at": "2025-06-08 19:25:57",
+                    "updated_at": "2025-06-08 19:25:57",
+                    "duplicate_count": 1,
+                    "price_duplicate_count": 1
+                },
+                {
+                    "id": "a72e8a01-4525-11f0-85ee-088fc31781b4",
+                    "name": "Supreme",
+                    "price": "52.00",
+                    "shares": 800,
+                    "roi": "5200.00",
+                    "annual_dividends": "420.00",
+                    "created_at": "2025-06-09 13:34:06",
+                    "updated_at": "2025-06-09 13:34:06",
+                    "duplicate_count": 1,
+                    "price_duplicate_count": 1
+                },
+                {
+                    "id": "c39aa406-448c-11f0-aa82-088fc31781b4",
+                    "name": "testing",
+                    "price": "500.00",
+                    "shares": 50,
+                    "roi": "2500.00",
+                    "annual_dividends": "5648.00",
+                    "created_at": "2025-06-08 19:19:41",
+                    "updated_at": "2025-06-08 19:23:17",
+                    "duplicate_count": 1,
+                    "price_duplicate_count": 7
+                },
+                {
+                    "id": "fbceaebe-45fd-11f0-aa44-088fc31781b4",
+                    "name": "Thunder",
+                    "price": "0.10",
+                    "shares": 10,
+                    "roi": "100.00",
+                    "annual_dividends": "120.00",
+                    "created_at": "2025-06-10 15:22:40",
+                    "updated_at": "2025-06-10 15:22:40",
+                    "duplicate_count": 1,
+                    "price_duplicate_count": 1
+                }
+            ],
+            "duplicates_detected": true
+        },
+        "step_2_auto_generation_sources": {
+            "status": "FAILED",
+            "error": "SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DAYS)\n            GROUP BY DATE(created_at)\n            ORDER BY creation_dat...' at line 6"
+        },
+        "step_3_code_analysis": {
+            "status": "SUCCESS",
+            "potential_files_checked": [
+                "..\/packages\/create-package.php",
+                "..\/packages\/manage-packages.php",
+                "..\/admin\/packages.php",
+                "..\/investments\/create-investment.php",
+                "..\/config\/init-packages.php",
+                "..\/setup\/default-packages.php"
+            ],
+            "existing_files": [],
+            "files_that_might_create_plans": 0
+        },
+        "step_4_creation_pattern_analysis": {
+            "status": "SUCCESS",
+            "bulk_creations": [
+                {
+                    "created_at": "2025-06-11 03:30:04",
+                    "plans_created_at_same_time": 7,
+                    "plan_names": "Starter,Bronze,Diamond,Silver,Gold,Platinum,Obsidian"
+                },
+                {
+                    "created_at": "2025-06-11 03:19:46",
+                    "plans_created_at_same_time": 7,
+                    "plan_names": "Bronze,Silver,Gold,Starter,Platinum,Diamond,Obsidian"
+                },
+                {
+                    "created_at": "2025-06-11 03:19:42",
+                    "plans_created_at_same_time": 7,
+                    "plan_names": "Gold,Obsidian,Diamond,Platinum,Silver,Bronze,Starter"
+                },
+                {
+                    "created_at": "2025-06-11 03:19:31",
+                    "plans_created_at_same_time": 7,
+                    "plan_names": "Diamond,Starter,Bronze,Obsidian,Silver,Gold,Platinum"
+                },
+                {
+                    "created_at": "2025-06-10 22:07:49",
+                    "plans_created_at_same_time": 7,
+                    "plan_names": "Diamond,Platinum,Gold,Silver,Bronze,Starter,Obsidian"
+                },
+                {
+                    "created_at": "2025-06-10 12:46:35",
+                    "plans_created_at_same_time": 3,
+                    "plan_names": "Gold,Bronze,Starter"
+                },
+                {
+                    "created_at": "2025-06-10 12:34:32",
+                    "plans_created_at_same_time": 3,
+                    "plan_names": "Obsidian,Platinum,Silver"
+                }
+            ],
+            "exact_duplicates": [
+                {
+                    "name": "Bronze",
+                    "price": "100.00",
+                    "shares": 10,
+                    "roi": "800.00",
+                    "annual_dividends": "800.00",
+                    "duplicate_count": 6,
+                    "duplicate_ids": "296f78a5-4662-11f0-aa44-088fc31781b4,30957d41-45e8-11f0-85ee-088fc31781b4,26dd46b8-4662-11f0-aa44-088fc31781b4,954ce4b6-4636-11f0-aa44-088fc31781b4,2057cf1a-4662-11f0-aa44-088fc31781b4,99fd09b0-4663-11f0-aa44-088fc31781b4",
+                    "first_created": "2025-06-10 12:46:35",
+                    "last_created": "2025-06-11 03:30:04"
+                },
+                {
+                    "name": "Gold",
+                    "price": "500.00",
+                    "shares": 75,
+                    "roi": "4000.00",
+                    "annual_dividends": "6000.00",
+                    "duplicate_count": 6,
+                    "duplicate_ids": "296fa133-4662-11f0-aa44-088fc31781b4,99fd3717-4663-11f0-aa44-088fc31781b4,954d1afa-4636-11f0-aa44-088fc31781b4,30959d36-45e8-11f0-85ee-088fc31781b4,2057f05f-4662-11f0-aa44-088fc31781b4,26dd7692-4662-11f0-aa44-088fc31781b4",
+                    "first_created": "2025-06-10 12:46:35",
+                    "last_created": "2025-06-11 03:30:04"
+                },
+                {
+                    "name": "Obsidian",
+                    "price": "50000.00",
+                    "shares": 12500,
+                    "roi": "250000.00",
+                    "annual_dividends": "1000000.00",
+                    "duplicate_count": 6,
+                    "duplicate_ids": "954d6db4-4636-11f0-aa44-088fc31781b4,82284638-45e6-11f0-85ee-088fc31781b4,20582602-4662-11f0-aa44-088fc31781b4,99fd6527-4663-11f0-aa44-088fc31781b4,296fdd81-4662-11f0-aa44-088fc31781b4,26ddbf2f-4662-11f0-aa44-088fc31781b4",
+                    "first_created": "2025-06-10 12:34:32",
+                    "last_created": "2025-06-11 03:30:04"
+                },
+                {
+                    "name": "Platinum",
+                    "price": "1000.00",
+                    "shares": 175,
+                    "roi": "8000.00",
+                    "annual_dividends": "15000.00",
+                    "duplicate_count": 6,
+                    "duplicate_ids": "205801c7-4662-11f0-aa44-088fc31781b4,954d2fac-4636-11f0-aa44-088fc31781b4,82281c9f-45e6-11f0-85ee-088fc31781b4,99fd46ba-4663-11f0-aa44-088fc31781b4,296fb18e-4662-11f0-aa44-088fc31781b4,26dd9656-4662-11f0-aa44-088fc31781b4",
+                    "first_created": "2025-06-10 12:34:32",
+                    "last_created": "2025-06-11 03:30:04"
+                },
+                {
+                    "name": "Silver",
+                    "price": "250.00",
+                    "shares": 30,
+                    "roi": "2000.00",
+                    "annual_dividends": "2500.00",
+                    "duplicate_count": 6,
+                    "duplicate_ids": "954cffb7-4636-11f0-aa44-088fc31781b4,99fd24f9-4663-11f0-aa44-088fc31781b4,82280c29-45e6-11f0-85ee-088fc31781b4,26dd60e2-4662-11f0-aa44-088fc31781b4,296f8cf1-4662-11f0-aa44-088fc31781b4,2057dfa2-4662-11f0-aa44-088fc31781b4",
+                    "first_created": "2025-06-10 12:34:32",
+                    "last_created": "2025-06-11 03:30:04"
+                },
+                {
+                    "name": "Starter",
+                    "price": "50.00",
+                    "shares": 2,
+                    "roi": "400.00",
+                    "annual_dividends": "200.00",
+                    "duplicate_count": 6,
+                    "duplicate_ids": "99fcebf9-4663-11f0-aa44-088fc31781b4,296f5df3-4662-11f0-aa44-088fc31781b4,26dd2e5c-4662-11f0-aa44-088fc31781b4,954caf11-4636-11f0-aa44-088fc31781b4,2057b31b-4662-11f0-aa44-088fc31781b4,30956439-45e8-11f0-85ee-088fc31781b4",
+                    "first_created": "2025-06-10 12:46:35",
+                    "last_created": "2025-06-11 03:30:04"
+                },
+                {
+                    "name": "Diamond",
+                    "price": "2500.00",
+                    "shares": 500,
+                    "roi": "20000.00",
+                    "annual_dividends": "50000.00",
+                    "duplicate_count": 5,
+                    "duplicate_ids": "99fd5653-4663-11f0-aa44-088fc31781b4,26ddad2b-4662-11f0-aa44-088fc31781b4,296fcad0-4662-11f0-aa44-088fc31781b4,2058140c-4662-11f0-aa44-088fc31781b4,954d4b9d-4636-11f0-aa44-088fc31781b4",
+                    "first_created": "2025-06-10 22:07:49",
+                    "last_created": "2025-06-11 03:30:04"
+                }
+            ],
+            "bulk_creation_detected": true,
+            "exact_duplicates_detected": true
+        },
+        "step_5_cleanup_recommendations": {
+            "status": "SUCCESS",
+            "recommendations": [
+                "Keep plan ID 296f78a5-4662-11f0-aa44-088fc31781b4 ('Bronze'), remove 5 duplicates",
+                "Keep plan ID 296fa133-4662-11f0-aa44-088fc31781b4 ('Gold'), remove 5 duplicates",
+                "Keep plan ID 954d6db4-4636-11f0-aa44-088fc31781b4 ('Obsidian'), remove 5 duplicates",
+                "Keep plan ID 205801c7-4662-11f0-aa44-088fc31781b4 ('Platinum'), remove 5 duplicates",
+                "Keep plan ID 954cffb7-4636-11f0-aa44-088fc31781b4 ('Silver'), remove 5 duplicates",
+                "Keep plan ID 99fcebf9-4663-11f0-aa44-088fc31781b4 ('Starter'), remove 5 duplicates",
+                "Keep plan ID 99fd5653-4663-11f0-aa44-088fc31781b4 ('Diamond'), remove 4 duplicates"
+            ],
+            "plans_to_keep": [
+                "296f78a5-4662-11f0-aa44-088fc31781b4",
+                "296fa133-4662-11f0-aa44-088fc31781b4",
+                "954d6db4-4636-11f0-aa44-088fc31781b4",
+                "205801c7-4662-11f0-aa44-088fc31781b4",
+                "954cffb7-4636-11f0-aa44-088fc31781b4",
+                "99fcebf9-4663-11f0-aa44-088fc31781b4",
+                "99fd5653-4663-11f0-aa44-088fc31781b4"
+            ],
+            "plans_to_remove": [
+                "30957d41-45e8-11f0-85ee-088fc31781b4",
+                "26dd46b8-4662-11f0-aa44-088fc31781b4",
+                "954ce4b6-4636-11f0-aa44-088fc31781b4",
+                "2057cf1a-4662-11f0-aa44-088fc31781b4",
+                "99fd09b0-4663-11f0-aa44-088fc31781b4",
+                "99fd3717-4663-11f0-aa44-088fc31781b4",
+                "954d1afa-4636-11f0-aa44-088fc31781b4",
+                "30959d36-45e8-11f0-85ee-088fc31781b4",
+                "2057f05f-4662-11f0-aa44-088fc31781b4",
+                "26dd7692-4662-11f0-aa44-088fc31781b4",
+                "82284638-45e6-11f0-85ee-088fc31781b4",
+                "20582602-4662-11f0-aa44-088fc31781b4",
+                "99fd6527-4663-11f0-aa44-088fc31781b4",
+                "296fdd81-4662-11f0-aa44-088fc31781b4",
+                "26ddbf2f-4662-11f0-aa44-088fc31781b4",
+                "954d2fac-4636-11f0-aa44-088fc31781b4",
+                "82281c9f-45e6-11f0-85ee-088fc31781b4",
+                "99fd46ba-4663-11f0-aa44-088fc31781b4",
+                "296fb18e-4662-11f0-aa44-088fc31781b4",
+                "26dd9656-4662-11f0-aa44-088fc31781b4",
+                "99fd24f9-4663-11f0-aa44-088fc31781b4",
+                "82280c29-45e6-11f0-85ee-088fc31781b4",
+                "26dd60e2-4662-11f0-aa44-088fc31781b4",
+                "296f8cf1-4662-11f0-aa44-088fc31781b4",
+                "2057dfa2-4662-11f0-aa44-088fc31781b4",
+                "296f5df3-4662-11f0-aa44-088fc31781b4",
+                "26dd2e5c-4662-11f0-aa44-088fc31781b4",
+                "954caf11-4636-11f0-aa44-088fc31781b4",
+                "2057b31b-4662-11f0-aa44-088fc31781b4",
+                "30956439-45e8-11f0-85ee-088fc31781b4",
+                "26ddad2b-4662-11f0-aa44-088fc31781b4",
+                "296fcad0-4662-11f0-aa44-088fc31781b4",
+                "2058140c-4662-11f0-aa44-088fc31781b4",
+                "954d4b9d-4636-11f0-aa44-088fc31781b4"
+            ],
+            "total_plans_to_remove": 34,
+            "cleanup_required": true
+        },
+        "final_assessment": {
+            "overall_status": "ISSUES_DETECTED",
+            "total_issues": 3,
+            "issues_detected": {
+                "duplicates_exist": true,
+                "auto_generation_active": false,
+                "bulk_creation_detected": true,
+                "cleanup_required": true
+            },
+            "requires_immediate_action": true,
+            "investigation_completed_at": "2025-06-18T13:17:39+02:00"
+        }
+    }
+}

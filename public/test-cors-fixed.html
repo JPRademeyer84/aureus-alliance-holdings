@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CORS Fix Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .success { color: green; }
+        .error { color: red; }
+        .warning { color: orange; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        button { padding: 10px 20px; margin: 10px 0; font-size: 16px; }
+        .test-section { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>CORS Fix Test</h1>
+    <p>Testing the CORS fix from frontend port (5173) to API port (80).</p>
+    <p><strong>Current URL:</strong> <span id="currentUrl"></span></p>
+    
+    <div class="test-section">
+        <h2>Test 1: CORS Test Endpoint</h2>
+        <button onclick="testCorsEndpoint()">Test CORS Endpoint</button>
+        <div id="corsResult"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: Auth Endpoint (Fixed)</h2>
+        <button onclick="testAuthEndpoint()">Test Auth Endpoint</button>
+        <div id="authResult"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 3: OPTIONS Preflight</h2>
+        <button onclick="testOptions()">Test OPTIONS</button>
+        <div id="optionsResult"></div>
+    </div>
+
+    <script>
+        document.getElementById('currentUrl').textContent = window.location.href;
+        
+        async function testCorsEndpoint() {
+            const resultDiv = document.getElementById('corsResult');
+            resultDiv.innerHTML = '<p>Testing CORS endpoint...</p>';
+            
+            try {
+                const response = await fetch('http://localhost/aureus-angel-alliance/api/test-cors.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        test: 'cors'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <h3 class="success">✅ CORS Test PASSED!</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <h3 class="error">❌ CORS Test Failed</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h3 class="error">❌ CORS Test Network Error</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+                console.error('CORS test error:', error);
+            }
+        }
+        
+        async function testAuthEndpoint() {
+            const resultDiv = document.getElementById('authResult');
+            resultDiv.innerHTML = '<p>Testing auth endpoint...</p>';
+            
+            try {
+                const response = await fetch('http://localhost/aureus-angel-alliance/api/admin/auth.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'login',
+                        username: 'admin',
+                        password: 'Underdog8406155100085@123!@#'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <h3 class="success">🎉 AUTH TEST PASSED!</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <p><strong>Admin ID:</strong> ${data.data.admin.id}</p>
+                        <p><strong>Username:</strong> ${data.data.admin.username}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <h3 class="error">❌ Auth Test Failed</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <p><strong>Error:</strong> ${data.error}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h3 class="error">❌ Auth Test Network Error</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+                console.error('Auth test error:', error);
+            }
+        }
+        
+        async function testOptions() {
+            const resultDiv = document.getElementById('optionsResult');
+            resultDiv.innerHTML = '<p>Testing OPTIONS request...</p>';
+            
+            try {
+                const response = await fetch('http://localhost/aureus-angel-alliance/api/admin/auth.php', {
+                    method: 'OPTIONS',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                
+                resultDiv.innerHTML = `
+                    <h3 class="success">✅ OPTIONS Request Successful</h3>
+                    <p><strong>Status:</strong> ${response.status}</p>
+                    <p><strong>CORS Headers:</strong></p>
+                    <ul>
+                        <li><strong>Access-Control-Allow-Origin:</strong> ${response.headers.get('Access-Control-Allow-Origin') || 'Not set'}</li>
+                        <li><strong>Access-Control-Allow-Methods:</strong> ${response.headers.get('Access-Control-Allow-Methods') || 'Not set'}</li>
+                        <li><strong>Access-Control-Allow-Headers:</strong> ${response.headers.get('Access-Control-Allow-Headers') || 'Not set'}</li>
+                    </ul>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h3 class="error">❌ OPTIONS Request Failed</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+                console.error('OPTIONS error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

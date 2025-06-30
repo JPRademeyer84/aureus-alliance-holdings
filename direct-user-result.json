@@ -1,0 +1,190 @@
+{
+    "success": true,
+    "test_type": "Direct User Experience Test",
+    "test_results": {
+        "user_session": {
+            "user_id": 1,
+            "username": "JPRademeyer",
+            "session_active": true
+        },
+        "commission_balance": {
+            "status": "SUCCESS",
+            "balance": {
+                "total_usdt_earned": 96,
+                "total_nft_earned": 19,
+                "available_usdt_balance": 71,
+                "available_nft_balance": 19,
+                "total_usdt_withdrawn": 10,
+                "total_nft_redeemed": 0
+            },
+            "integrity_valid": true,
+            "user_can_see_balance": true
+        },
+        "withdrawal_request": {
+            "status": "SUCCESS",
+            "withdrawal_result": {
+                "success": true,
+                "withdrawal_id": "withdrawal_68529901b1bfa4.59963743",
+                "status": "pending",
+                "message": "Withdrawal request submitted and queued for processing",
+                "next_business_day": null
+            },
+            "user_can_request_withdrawal": true
+        },
+        "withdrawal_history": {
+            "status": "SUCCESS",
+            "withdrawal_count": 8,
+            "withdrawals": [
+                {
+                    "id": "withdrawal_68529901b1bfa4.59963743",
+                    "withdrawal_type": "usdt",
+                    "requested_amount_usdt": "5.00000000",
+                    "requested_amount_nft": 0,
+                    "wallet_address": "0x1234567890abcdef1234567890abcdef12345678",
+                    "status": "pending",
+                    "requested_at": "2025-06-18 12:46:25",
+                    "transaction_hash": null,
+                    "blockchain_confirmation_hash": null,
+                    "admin_notes": null
+                },
+                {
+                    "id": "withdrawal_685296ab3646a0.18839107",
+                    "withdrawal_type": "usdt",
+                    "requested_amount_usdt": "10.00000000",
+                    "requested_amount_nft": 0,
+                    "wallet_address": "0x1234567890abcdef1234567890abcdef12345678",
+                    "status": "pending",
+                    "requested_at": "2025-06-18 12:36:27",
+                    "transaction_hash": null,
+                    "blockchain_confirmation_hash": null,
+                    "admin_notes": null
+                },
+                {
+                    "id": "withdrawal_685296ab3a6148.71505656",
+                    "withdrawal_type": "nft",
+                    "requested_amount_usdt": "0.00000000",
+                    "requested_amount_nft": 2,
+                    "wallet_address": "0x1234567890abcdef1234567890abcdef12345678",
+                    "status": "pending",
+                    "requested_at": "2025-06-18 12:36:27",
+                    "transaction_hash": null,
+                    "blockchain_confirmation_hash": null,
+                    "admin_notes": null
+                },
+                {
+                    "id": "withdrawal_68529652c6f012.95218380",
+                    "withdrawal_type": "usdt",
+                    "requested_amount_usdt": "5.00000000",
+                    "requested_amount_nft": 0,
+                    "wallet_address": "0xabcdef1234567890",
+                    "status": "pending",
+                    "requested_at": "2025-06-18 12:34:58",
+                    "transaction_hash": null,
+                    "blockchain_confirmation_hash": null,
+                    "admin_notes": null
+                },
+                {
+                    "id": "withdrawal_685295eab73293.77049578",
+                    "withdrawal_type": "usdt",
+                    "requested_amount_usdt": "5.00000000",
+                    "requested_amount_nft": 0,
+                    "wallet_address": "0xabcdef1234567890",
+                    "status": "pending",
+                    "requested_at": "2025-06-18 12:33:14",
+                    "transaction_hash": null,
+                    "blockchain_confirmation_hash": null,
+                    "admin_notes": null
+                },
+                {
+                    "id": "withdrawal_685294930ac681.19387486",
+                    "withdrawal_type": "usdt",
+                    "requested_amount_usdt": "5.00000000",
+                    "requested_amount_nft": 0,
+                    "wallet_address": "0xabcdef1234567890",
+                    "status": "pending",
+                    "requested_at": "2025-06-18 12:27:31",
+                    "transaction_hash": null,
+                    "blockchain_confirmation_hash": null,
+                    "admin_notes": null
+                },
+                {
+                    "id": "withdrawal_6852940f38ff81.56800570",
+                    "withdrawal_type": "usdt",
+                    "requested_amount_usdt": "5.00000000",
+                    "requested_amount_nft": 0,
+                    "wallet_address": "0xabcdef1234567890",
+                    "status": "completed",
+                    "requested_at": "2025-06-18 12:25:19",
+                    "transaction_hash": "0x192e5f9b2a0e86b9bcb55bf3b68d3f75835eee93514508d02f46b581138499db",
+                    "blockchain_confirmation_hash": "0xbaa25abcee9d3ff82f0f49da14ba1ab7ac7b5fb848b811c4deb3ca557a6f35d3",
+                    "admin_notes": "Test withdrawal processed"
+                },
+                {
+                    "id": "withdrawal_6852919eb6c428.46976232",
+                    "withdrawal_type": "usdt",
+                    "requested_amount_usdt": "5.00000000",
+                    "requested_amount_nft": 0,
+                    "wallet_address": "0xabcdef1234567890",
+                    "status": "completed",
+                    "requested_at": "2025-06-18 12:14:54",
+                    "transaction_hash": "0x1c78aa277c770ace3f5308fd1aaae5361b7fc357d6c44aa3eb17073d1cd238e6",
+                    "blockchain_confirmation_hash": "0xa51df4700ba3cbac56eba73b178d57503c3e09c675c8ce55b8a2cd486ea2c9c7",
+                    "admin_notes": "Test withdrawal processed"
+                }
+            ],
+            "user_can_see_history": true
+        },
+        "reinvestment": {
+            "status": "SUCCESS",
+            "usdt_invested": 10,
+            "nft_packs_purchased": 2,
+            "investment_id": "test_reinvest_68529901b2f6c7.66966579",
+            "user_can_reinvest": true
+        },
+        "final_balance": {
+            "status": "SUCCESS",
+            "balance": {
+                "total_usdt_earned": 96,
+                "total_nft_earned": 21,
+                "available_usdt_balance": 61,
+                "available_nft_balance": 21,
+                "total_usdt_withdrawn": 10,
+                "total_nft_redeemed": 0
+            },
+            "integrity_valid": true,
+            "balance_updated_correctly": true
+        },
+        "commission_data": {
+            "status": "SUCCESS",
+            "commission_stats": {
+                "total_commissions": 8,
+                "total_usdt_earned": "96.00",
+                "total_nft_earned": "16",
+                "paid_commissions": 8
+            },
+            "has_active_commissions": true
+        },
+        "security_audit": {
+            "status": "SUCCESS",
+            "transaction_log_entries": 24,
+            "audit_trail_active": true
+        },
+        "user_experience_summary": {
+            "overall_status": "PERFECT_USER_EXPERIENCE",
+            "working_features": 7,
+            "total_features": 7,
+            "success_rate": "100%",
+            "user_features": {
+                "can_see_balance": true,
+                "can_request_withdrawal": true,
+                "can_see_history": true,
+                "can_reinvest": true,
+                "balance_integrity_valid": true,
+                "has_commissions": true,
+                "audit_trail_working": true
+            },
+            "ready_for_users": true,
+            "test_completed_at": "2025-06-18T12:46:25+02:00"
+        }
+    }
+}

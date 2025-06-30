@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Panel Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .test-section {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+        .success { color: #4ade80; }
+        .error { color: #f87171; }
+        .warning { color: #fbbf24; }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #2563eb; }
+        pre {
+            background: #000;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        .feature {
+            background: #333;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border-left: 4px solid #4ade80;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Debug Panel Configuration Test</h1>
+    <p>This page tests the debug panel configuration and shows what should be displayed.</p>
+
+    <div class="test-section">
+        <h2>Test 1: Check Active Features API</h2>
+        <button onclick="testActiveFeatures()">🔄 Test Active Features</button>
+        <div id="active-features-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Expected Debug Behavior</h2>
+        <div id="expected-behavior">
+            <h3>Based on your configuration, both debug systems should:</h3>
+
+            <h4>🔧 Enhanced Debug Panel (Ctrl+Shift+D):</h4>
+            <ul>
+                <li>✅ Show only <strong>1 feature</strong> in the sidebar</li>
+                <li>✅ Display <strong>"Error Tracking"</strong> as the only available tab</li>
+                <li>✅ Show <strong>"1 features active"</strong> in the header</li>
+                <li>❌ <strong>NOT</strong> show Console Logs, Network Monitor, Database Queries, etc.</li>
+            </ul>
+
+            <h4>🐛 Simple Debug Console (Bottom-right corner):</h4>
+            <ul>
+                <li>✅ Show only <strong>Error Tracking</strong> enabled (red "E" badge)</li>
+                <li>✅ Only capture and display <strong>errors</strong></li>
+                <li>❌ <strong>NOT</strong> show console logs, network requests, etc.</li>
+                <li>✅ Show error count in button badge</li>
+                <li>✅ Filter buttons should only show "All" and "Errors"</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Debug Panel Access</h2>
+        <div>
+            <p><strong>How to access the debug panel:</strong></p>
+            <ol>
+                <li>Press <kbd>Ctrl+Shift+D</kbd> on any page</li>
+                <li>Or click the floating debug button (bottom-right corner)</li>
+                <li>The panel should open with only Error Tracking available</li>
+            </ol>
+            
+            <p><strong>If you see more than 1 tab:</strong></p>
+            <ul>
+                <li>🔄 Hard refresh the page (Ctrl+F5)</li>
+                <li>🧹 Clear browser cache</li>
+                <li>🔍 Check browser console for errors</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4: Error Detection Test</h2>
+        <p>Test if the debug console properly captures errors when only Error Tracking is enabled:</p>
+        <button onclick="triggerTestError()">🔥 Trigger Test Error</button>
+        <button onclick="triggerNetworkError()">🌐 Trigger Network Error</button>
+        <button onclick="triggerConsoleLog()">📝 Trigger Console Log</button>
+        <div id="error-test-result"></div>
+
+        <div class="warning" style="margin-top: 15px;">
+            <h4>Expected Results:</h4>
+            <ul>
+                <li>✅ <strong>Test Error</strong> should appear in debug console</li>
+                <li>✅ <strong>Network Error</strong> should NOT appear (network monitoring disabled)</li>
+                <li>✅ <strong>Console Log</strong> should NOT appear (console logging disabled)</li>
+                <li>🎯 Only errors should be captured and displayed</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 5: Troubleshooting</h2>
+        <button onclick="testTroubleshooting()">🔧 Run Troubleshooting</button>
+        <div id="troubleshooting-result"></div>
+    </div>
+
+    <script>
+        async function testActiveFeatures() {
+            const resultDiv = document.getElementById('active-features-result');
+            resultDiv.innerHTML = '<p class="warning">Testing active features API...</p>';
+            
+            try {
+                const response = await fetch('/api/admin/debug-config.php?action=active', {
+                    credentials: 'include'
+                });
+                
+                const data = await response.json();
+                console.log('Active features API response:', data);
+                
+                if (data.success) {
+                    const features = data.data.features;
+                    const featureCount = features.length;
+                    
+                    let html = `
+                        <div class="success">
+                            <h3>✅ API Success!</h3>
+                            <p><strong>Active Features:</strong> ${featureCount}</p>
+                            <p><strong>Debug Enabled:</strong> ${data.data.debug_enabled}</p>
+                            <p><strong>Environment:</strong> ${data.data.environment}</p>
+                        </div>
+                    `;
+                    
+                    if (featureCount === 1 && features[0].feature_key === 'error_tracking') {
+                        html += `
+                            <div class="success">
+                                <h4>🎯 Perfect Configuration!</h4>
+                                <p>Only Error Tracking is enabled, as expected.</p>
+                            </div>
+                        `;
+                    } else if (featureCount === 0) {
+                        html += `
+                            <div class="warning">
+                                <h4>⚠️ No Features Enabled</h4>
+                                <p>Debug panel will be disabled. Enable Error Tracking in Debug Manager.</p>
+                            </div>
+                        `;
+                    } else {
+                        html += `
+                            <div class="error">
+                                <h4>❌ Too Many Features Enabled</h4>
+                                <p>Expected only Error Tracking, but found ${featureCount} features.</p>
+                            </div>
+                        `;
+                    }
+                    
+                    html += '<h4>Active Features:</h4>';
+                    features.forEach(feature => {
+                        html += `
+                            <div class="feature">
+                                <strong>${feature.feature_name}</strong> (${feature.feature_key})<br>
+                                <small>${feature.feature_description}</small>
+                            </div>
+                        `;
+                    });
+                    
+                    resultDiv.innerHTML = html;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h3>❌ API Error</h3>
+                            <p><strong>Error:</strong> ${data.error || 'Unknown error'}</p>
+                            <p>Make sure you're logged in as admin.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h3>❌ Network Error</h3>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p>Check if the server is running and you're logged in.</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function testTroubleshooting() {
+            const resultDiv = document.getElementById('troubleshooting-result');
+            
+            let html = '<h3>🔧 Troubleshooting Results:</h3>';
+            
+            // Check if we're on the right domain
+            const currentUrl = window.location.href;
+            html += `<p><strong>Current URL:</strong> ${currentUrl}</p>`;
+            
+            // Check for debug button
+            const debugButton = document.querySelector('[title*="Debug Panel"]');
+            if (debugButton) {
+                html += '<p class="success">✅ Debug button found on page</p>';
+            } else {
+                html += '<p class="error">❌ Debug button not found - may be disabled</p>';
+            }
+            
+            // Check localStorage
+            const debugMode = localStorage.getItem('debug-mode');
+            html += `<p><strong>Debug Mode (localStorage):</strong> ${debugMode || 'not set'}</p>`;
+            
+            // Check session storage
+            const adminData = localStorage.getItem('admin');
+            if (adminData) {
+                try {
+                    const admin = JSON.parse(adminData);
+                    html += `<p class="success">✅ Admin logged in: ${admin.username}</p>`;
+                } catch (e) {
+                    html += '<p class="error">❌ Invalid admin data in localStorage</p>';
+                }
+            } else {
+                html += '<p class="warning">⚠️ No admin data found - may need to login</p>';
+            }
+            
+            // Check console for errors
+            html += `
+                <div class="warning">
+                    <h4>📋 Next Steps:</h4>
+                    <ol>
+                        <li>Open browser console (F12) and look for debug panel logs</li>
+                        <li>Try pressing Ctrl+Shift+D to open debug panel</li>
+                        <li>If panel shows wrong features, clear browser cache</li>
+                        <li>Check Debug Manager to verify only Error Tracking is enabled</li>
+                    </ol>
+                </div>
+            `;
+            
+            resultDiv.innerHTML = html;
+        }
+
+        function triggerTestError() {
+            const resultDiv = document.getElementById('error-test-result');
+            resultDiv.innerHTML = '<p class="warning">Triggering test error...</p>';
+
+            try {
+                // This will throw an error
+                throw new Error('🔥 TEST ERROR: This is a test error to verify error tracking is working!');
+            } catch (error) {
+                console.error('Test error triggered:', error);
+                resultDiv.innerHTML = '<p class="success">✅ Test error triggered! Check the debug console in bottom-right corner.</p>';
+            }
+        }
+
+        function triggerNetworkError() {
+            const resultDiv = document.getElementById('error-test-result');
+            resultDiv.innerHTML = '<p class="warning">Triggering network error...</p>';
+
+            // This will fail and should NOT appear in debug console (network monitoring disabled)
+            fetch('/non-existent-endpoint-test-12345')
+                .catch(error => {
+                    console.log('Network error triggered (should not be captured):', error);
+                    resultDiv.innerHTML = '<p class="warning">⚠️ Network error triggered! This should NOT appear in debug console.</p>';
+                });
+        }
+
+        function triggerConsoleLog() {
+            const resultDiv = document.getElementById('error-test-result');
+            resultDiv.innerHTML = '<p class="warning">Triggering console log...</p>';
+
+            // This should NOT appear in debug console (console logging disabled)
+            console.log('🔍 TEST LOG: This console log should NOT appear in debug console!');
+            console.warn('⚠️ TEST WARNING: This warning should NOT appear in debug console!');
+            console.info('ℹ️ TEST INFO: This info should NOT appear in debug console!');
+
+            resultDiv.innerHTML = '<p class="warning">⚠️ Console logs triggered! These should NOT appear in debug console.</p>';
+        }
+
+        // Auto-run the active features test
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                testActiveFeatures();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

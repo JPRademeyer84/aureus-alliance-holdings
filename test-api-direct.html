@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Direct API Test</title>
+</head>
+<body>
+    <h1>Direct API Test</h1>
+    <button onclick="testAPI()">Test API</button>
+    <div id="result"></div>
+
+    <script>
+        async function testAPI() {
+            const resultDiv = document.getElementById('result');
+            
+            try {
+                console.log('Testing API directly...');
+                
+                // Test the exact URL that should be called
+                const url = 'http://localhost:3506/Aureus%201%20-%20Complex/api/minimal-test.php';
+                console.log('Calling URL:', url);
+                
+                const response = await fetch(url);
+                console.log('Response status:', response.status);
+                console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+                
+                const text = await response.text();
+                console.log('Response text:', text);
+                
+                resultDiv.innerHTML = `
+                    <h3>Response Status: ${response.status}</h3>
+                    <h3>Response Text:</h3>
+                    <pre>${text}</pre>
+                `;
+                
+                // Try to parse as JSON
+                try {
+                    const data = JSON.parse(text);
+                    console.log('Parsed JSON:', data);
+                    resultDiv.innerHTML += `<h3>Parsed JSON:</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                } catch (parseError) {
+                    console.error('JSON parse error:', parseError);
+                    resultDiv.innerHTML += `<h3>JSON Parse Error:</h3><pre>${parseError.message}</pre>`;
+                }
+                
+            } catch (error) {
+                console.error('Fetch error:', error);
+                resultDiv.innerHTML = `<h3>Fetch Error:</h3><pre>${error.message}</pre>`;
+            }
+        }
+    </script>
+</body>
+</html>

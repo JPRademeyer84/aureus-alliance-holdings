@@ -1,0 +1,26 @@
+🔧 CREATING NFT COUPONS TABLES
+==============================
+
+Executing migration...
+❌ Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aureus_angels.nft_coupons' doesn't exist
+   Statement: INSERT IGNORE INTO nft_coupons (
+    coupon_code, value, description, created_by, notes, expires_at
+...
+❌ Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aureus_angels.nft_coupons' doesn't exist
+   Statement: INSERT IGNORE INTO nft_coupons (
+    coupon_code, value, description, created_by, notes, expires_at
+...
+
+==============================
+🎉 MIGRATION COMPLETED
+==============================
+Successful statements: 0
+Failed statements: 2
+⚠️ Some statements failed. Check errors above.
+
+Verifying tables...
+❌ nft_coupons: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aureus_angels.nft_coupons' doesn't exist
+❌ user_credits: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aureus_angels.user_credits' doesn't exist
+❌ credit_transactions: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aureus_angels.credit_transactions' doesn't exist
+
+Migration completed at: 2025-06-18 14:40:28

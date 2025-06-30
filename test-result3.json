@@ -1,0 +1,45 @@
+{
+    "success": true,
+    "test_type": "Complete End-to-End Workflow Test",
+    "test_results": {
+        "workflow_test": {
+            "step_1_create_users": {
+                "status": "SUCCESS",
+                "referrer_id": 1,
+                "referred_id": 5,
+                "referrer_username": "JPRademeyer",
+                "referred_username": "TestUser"
+            },
+            "step_2_referral_tracking": {
+                "status": "SUCCESS",
+                "referral_data_stored": true,
+                "session_data": {
+                    "referrer_user_id": 1,
+                    "referrer_username": "JPRademeyer",
+                    "source": "direct_link",
+                    "timestamp": "2025-06-18T12:12:23+02:00",
+                    "ip_address": "127.0.0.1",
+                    "user_agent": "Test Agent"
+                }
+            },
+            "step_3_investment_creation": {
+                "status": "FAILED",
+                "error": "Balance integrity verification failed"
+            },
+            "step_4_commission_activation": [],
+            "step_5_withdrawal_request": [],
+            "step_6_security_verification": {
+                "status": "FAILED",
+                "error": "Balance integrity verification failed"
+            }
+        },
+        "workflow_summary": {
+            "overall_status": "PARTIAL_FAILURE",
+            "steps_completed": 2,
+            "total_steps": 6,
+            "test_completed_at": "2025-06-18T12:12:23+02:00",
+            "referrer_username": "JPRademeyer",
+            "referred_username": "TestUser"
+        }
+    }
+}

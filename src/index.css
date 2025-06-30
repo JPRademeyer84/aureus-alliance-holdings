@@ -1,0 +1,152 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Import mobile optimization styles */
+@import './styles/mobile.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark theme as default */
+    --background: 220 13% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 13% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 13% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 263 100% 25%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 220 13% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 13% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 220 13% 15%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 15%;
+    --ring: 263 100% 25%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 220 13% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 263 100% 25%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 220 13% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 13% 20%;
+    --sidebar-ring: 263 100% 25%;
+  }
+
+  .dark {
+    --background: 220 13% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 13% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 13% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 263 100% 25%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 220 13% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 13% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 220 13% 15%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 15%;
+    --ring: 263 100% 25%;
+    --sidebar-background: 220 13% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 263 100% 25%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 220 13% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 13% 20%;
+    --sidebar-ring: 263 100% 25%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-[#0E0E14] text-white font-montserrat;
+  }
+
+  /* Force dark theme for all inputs and form elements */
+  input, textarea, select {
+    @apply bg-gray-800 text-white border-gray-600 placeholder:text-gray-400;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    @apply border-blue-500 ring-blue-500/20;
+  }
+
+  /* Dark theme for all dialogs and modals */
+  [data-radix-dialog-content] {
+    @apply bg-gray-800 border-gray-700 text-white;
+  }
+
+  /* Dark theme for select dropdowns */
+  [data-radix-select-content] {
+    @apply bg-gray-800 border-gray-700 text-white;
+  }
+
+  [data-radix-select-item] {
+    @apply text-white hover:bg-gray-700;
+  }
+
+  /* Dark theme for popovers */
+  [data-radix-popover-content] {
+    @apply bg-gray-800 border-gray-700 text-white;
+  }
+
+  /* Dark theme for tooltips */
+  [data-radix-tooltip-content] {
+    @apply bg-gray-800 border-gray-700 text-white;
+  }
+}
+
+@layer components {
+  .gold-shimmer {
+    @apply relative overflow-hidden;
+  }
+  
+  .gold-shimmer::before {
+    @apply content-[''] absolute top-0 left-0 w-[300%] h-full bg-shimmer-gold animate-shimmer;
+  }
+  
+  .golden-border {
+    @apply border border-gold shadow-[0_0_10px_rgba(212,175,55,0.5)];
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gold-gradient;
+  }
+}

@@ -1,0 +1,151 @@
+{
+    "success": true,
+    "test_type": "User Interface Integration Test",
+    "test_results": {
+        "ui_test": {
+            "step_1_simulate_login": {
+                "status": "SUCCESS",
+                "user_id": 1,
+                "username": "JPRademeyer",
+                "session_created": true
+            },
+            "step_2_commission_balance_api": {
+                "status": "SUCCESS",
+                "balance": {
+                    "total_usdt_earned": 72,
+                    "total_nft_earned": 12,
+                    "available_usdt_balance": 72,
+                    "available_nft_balance": 12,
+                    "total_usdt_withdrawn": 0,
+                    "total_nft_redeemed": 0
+                },
+                "commission_stats": {
+                    "total_commissions": 6,
+                    "pending_commissions": "0",
+                    "paid_commissions": "6",
+                    "pending_usdt": "0.00",
+                    "pending_nft": "0"
+                },
+                "api_accessible": true
+            },
+            "step_3_withdrawal_history_api": {
+                "status": "SUCCESS",
+                "withdrawal_count": 3,
+                "withdrawals": [
+                    {
+                        "id": "withdrawal_685294930ac681.19387486",
+                        "user_id": 1,
+                        "withdrawal_type": "usdt",
+                        "requested_amount_usdt": "5.00000000",
+                        "requested_amount_nft": 0,
+                        "wallet_address": "0xabcdef1234567890",
+                        "request_hash": "80e160d4fe4000f7ed0065aafffd8ace484754cdca89c80c07bd68038bbbdf97",
+                        "status": "pending",
+                        "requested_at": "2025-06-18 12:27:31",
+                        "queued_at": null,
+                        "processing_started_at": null,
+                        "completed_at": null,
+                        "next_business_day": null,
+                        "admin_id": null,
+                        "admin_notes": null,
+                        "transaction_hash": null,
+                        "blockchain_confirmation_hash": null,
+                        "ip_address": "::1",
+                        "user_agent": "Mozilla\/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell\/5.1.26100.3624",
+                        "security_verification_hash": "49c1430a7139992b962fe06b810718afe09fcb03a08967804674ee1e68b6d4fea41359f4a9fe2776e45ce711a8f8d284d69dbe48f7a584815dcf72af255f712a",
+                        "created_at": "2025-06-18 12:27:31",
+                        "updated_at": "2025-06-18 12:27:31",
+                        "queue_position": 3,
+                        "scheduled_for_date": "2025-06-18",
+                        "queue_status": "scheduled"
+                    },
+                    {
+                        "id": "withdrawal_6852940f38ff81.56800570",
+                        "user_id": 1,
+                        "withdrawal_type": "usdt",
+                        "requested_amount_usdt": "5.00000000",
+                        "requested_amount_nft": 0,
+                        "wallet_address": "0xabcdef1234567890",
+                        "request_hash": "2f2cf014969e20c1cb32a4ae255718706ad3f5712eab3a95bc5dd3ef8b6ddc1d",
+                        "status": "pending",
+                        "requested_at": "2025-06-18 12:25:19",
+                        "queued_at": null,
+                        "processing_started_at": null,
+                        "completed_at": null,
+                        "next_business_day": null,
+                        "admin_id": null,
+                        "admin_notes": null,
+                        "transaction_hash": null,
+                        "blockchain_confirmation_hash": null,
+                        "ip_address": "::1",
+                        "user_agent": "Mozilla\/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell\/5.1.26100.3624",
+                        "security_verification_hash": "f71352738f7810f80db78c95ed5bc80aaf856f2492a6bcf91aaa0070ef7b14f115f4c237a6aa4de632e115e870ccd1ee0b30b9042cdd29c31e2a443c0a93780e",
+                        "created_at": "2025-06-18 12:25:19",
+                        "updated_at": "2025-06-18 12:25:19",
+                        "queue_position": 2,
+                        "scheduled_for_date": "2025-06-18",
+                        "queue_status": "scheduled"
+                    },
+                    {
+                        "id": "withdrawal_6852919eb6c428.46976232",
+                        "user_id": 1,
+                        "withdrawal_type": "usdt",
+                        "requested_amount_usdt": "5.00000000",
+                        "requested_amount_nft": 0,
+                        "wallet_address": "0xabcdef1234567890",
+                        "request_hash": "eb212e87a477f5ff8a19cdbb26cd14ab4ca107ea7f7396b1d53e514fffc78714",
+                        "status": "pending",
+                        "requested_at": "2025-06-18 12:14:54",
+                        "queued_at": null,
+                        "processing_started_at": null,
+                        "completed_at": null,
+                        "next_business_day": null,
+                        "admin_id": null,
+                        "admin_notes": null,
+                        "transaction_hash": null,
+                        "blockchain_confirmation_hash": null,
+                        "ip_address": "::1",
+                        "user_agent": "Mozilla\/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell\/5.1.26100.3624",
+                        "security_verification_hash": "1fea49cd783a3ca3813bdd6890fe9f880ad4b378a618a71808b7acdcab8142d29e96beaa498e8a348f981609b3c6972b913672bb0a2303457f640193dd70ea38",
+                        "created_at": "2025-06-18 12:14:54",
+                        "updated_at": "2025-06-18 12:14:54",
+                        "queue_position": 1,
+                        "scheduled_for_date": "2025-06-18",
+                        "queue_status": "scheduled"
+                    }
+                ],
+                "api_accessible": true
+            },
+            "step_4_referral_stats_api": {
+                "status": "SUCCESS",
+                "referral_stats": {
+                    "total_referrals": 1,
+                    "total_commissions": 6,
+                    "total_usdt_earned": "72.00",
+                    "total_nft_earned": "12",
+                    "last_commission_date": "2025-06-18 12:27:31"
+                },
+                "api_accessible": true
+            },
+            "step_5_reinvestment_api": {
+                "status": "SUCCESS",
+                "file_exists": true,
+                "api_accessible": true
+            },
+            "step_6_security_integration": {
+                "status": "SUCCESS",
+                "integrity_valid": true,
+                "transaction_log_entries": 11,
+                "security_system_working": true
+            }
+        },
+        "ui_summary": {
+            "overall_status": "ALL_UI_TESTS_PASS",
+            "successful_steps": 6,
+            "total_steps": 6,
+            "test_completed_at": "2025-06-18T12:28:49+02:00",
+            "user_session_active": true,
+            "test_user": "JPRademeyer"
+        }
+    }
+}
